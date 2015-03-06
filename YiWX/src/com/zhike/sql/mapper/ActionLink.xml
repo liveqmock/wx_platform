@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.ActionLinkDAO">
+	<insert id="addNewActionLink" parameterType="ActionLinkBean" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO WX_ACTIONLINK(UID,APPID,KEYWORD,TITLE,DESCS,IMG,CREATETIME,URL,serviceid,type)
+		VALUES(#{uid},#{appid},#{keyword},#{title},#{descs},#{img},now(),#{url},#{serviceid},#{type})
+	</insert>
+	
+	<delete id="deleteActionLink" parameterType="ActionLinkBean">
+		DELETE FROM WX_ACTIONLINK WHERE serviceid = #{serviceid} AND type = #{type}
+	</delete>
+	
+	<!-- 后配置的优先 -->
+	<select id="selectActionLinkByAppIdAndKeyword" parameterType="ActionLinkBean" resultType="ActionLinkBean">
+		SELECT * FROM WX_ACTIONLINK WHERE APPID = #{appid} AND KEYWORD = #{keyword} order by id desc limit 1
+	</select>
+	
+	<select id="selectActionLinkByUIDAndAppId" parameterType="ActionLinkBean" resultType="ActionLinkBean">
+		SELECT * FROM WX_ACTIONLINK WHERE UID = #{uid} AND APPID = #{appid} ORDER BY TYPE 
+	</select>
+</mapper>

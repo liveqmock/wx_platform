@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 数据库管理 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/yiwx?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"></property>
+		<property name="username" value="root"></property>
+		<!--<property name="password" value="heishou123"></property>  -->
+		<property name="password" value="root"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="true"></property>
+	    <property name="removeAbandoned" value="true" />
+	    <property name="removeAbandonedTimeout" value="180" />
+	</bean>
+	<!-- 数据库sqlsessonFactory 管理器 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:MyBatis-Configuration.xml"></property>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+
+	<!-- DAO方法直接操作数据库 -->	
+	<bean id="checkLoginDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.CheckLoginDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<!-- 添加应用程序信息 -->
+	<bean id="appDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.APPDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="materialDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.MaterialDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="menuDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.MenuDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+
+	<bean id="keywordsDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.KeywordsDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="webSiteDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.WebSiteDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>
+	
+	<bean id="guaguakaDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.GuaguakaDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="userActionDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.UserActionDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="orderDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.OrderDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="actionLinkDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.ActionLinkDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<bean id="messageDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.MessageDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>
+	
+	<bean id="quanjingDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.QuanJingDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>
+	
+	<bean id="photoDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.PhotoDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>
+	
+	<bean id="lbsDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.LBSDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+
+	<bean id="memberDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.MemberDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>	
+
+	<bean id="wxUserDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.WxUserDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>	
+	
+	<bean id="researchDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.ResearchDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>
+
+	<bean id="clockDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.ClockDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>
+	
+	<bean id="crawlerCategoryDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.data.crawler.dao.CrawlerCategoryDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>
+	
+	<bean id="crawlerTaskForUserDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.data.crawler.dao.CrawlerTaskForUserDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>
+	
+	<bean id="crawlerTaskForKeywordDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.data.crawler.dao.CrawlerTaskForKeywordDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>
+
+	<bean id="crawlerResultDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.data.crawler.dao.CrawlerResultDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>	
+	</bean>	
+	
+	<bean id="liuyingDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.zhike.sql.dao.LiuyingDAO"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>	
+	
+	<!-- 配置ServiceImpl -->
+	<bean id="checkLoginService" class="com.zhike.sql.servicesImpl.CheckLoginServiceImpl">
+		<property name="checkLoginDAO" ref="checkLoginDAO"></property>
+	</bean>
+	
+	<bean id="appService" class="com.zhike.sql.servicesImpl.APPServiceImpl">
+		<property name="appDAO" ref="appDAO"></property>
+	</bean>
+	
+	<bean id="appManagerService" class="com.zhike.sql.servicesImpl.APPManagerServiceImpl">
+		<property name="appDAO" ref="appDAO"></property>
+	</bean>
+	
+	<bean id="materialService" class="com.zhike.sql.servicesImpl.MaterialServiceImpl">
+		<property name="materialDAO" ref="materialDAO"></property>
+	</bean>
+	
+	<bean id="menuService" class="com.zhike.sql.servicesImpl.MenuServiceImpl">
+		<property name="menuDAO" ref="menuDAO"></property>
+	</bean>
+	
+	<bean id="keywordsService" class="com.zhike.sql.servicesImpl.KeywordsServiceImpl">
+		<property name="keywordsDAO" ref="keywordsDAO"></property>
+	</bean>
+	
+	<bean id="webSiteService" class="com.zhike.sql.servicesImpl.WebSiteServiceImpl">
+		<property name="webSiteDAO" ref="webSiteDAO"></property>
+	</bean>
+	
+	<bean id="guaguakaService" class="com.zhike.sql.servicesImpl.GuaguakaServiceImpl">
+		<property name="guaguakaDAO" ref="guaguakaDAO"></property>
+	</bean>
+	
+	<bean id="userActionService" class="com.zhike.sql.servicesImpl.UserActionServiceImpl">
+		<property name="userActionDAO" ref="userActionDAO"></property>
+	</bean>
+	
+	<bean id="orderService" class="com.zhike.sql.servicesImpl.OrderServiceImpl">
+		<property name="orderDAO" ref="orderDAO"></property>
+	</bean>
+	
+	<bean id="messageService" class="com.zhike.sql.servicesImpl.MessageServiceImpl">
+		<property name="messageDAO" ref="messageDAO"></property>
+	</bean>
+
+	<bean id="actionLinkService" class="com.zhike.sql.servicesImpl.ActionLinkServiceImpl">
+		<property name="actionLinkDAO" ref="actionLinkDAO"></property>
+	</bean>
+	<bean id="quanjingService" class="com.zhike.sql.servicesImpl.QuanJingServiceImpl">
+		<property name="quanjingDAO" ref="quanjingDAO"></property>
+	</bean>
+	<bean id="photoService" class="com.zhike.sql.servicesImpl.PhotoServiceImpl">
+		<property name="photoDAO" ref="photoDAO"></property>
+	</bean>
+
+	<bean id="lbsService" class="com.zhike.sql.servicesImpl.LBSServiceImpl">
+		<property name="lbsDAO" ref="lbsDAO"></property>
+	</bean>
+
+	<bean id="memberService" class="com.zhike.sql.servicesImpl.MemberServiceImpl">
+		<property name="memberDAO" ref="memberDAO"></property>
+	</bean>
+	
+	<bean id="wxUserService" class="com.zhike.sql.servicesImpl.WxUserServiceImpl">
+		<property name="wxUserDAO" ref="wxUserDAO"></property>
+	</bean>
+	
+	<bean id="researchService" class="com.zhike.sql.servicesImpl.ResearchServiceImpl">
+		<property name="researchDAO" ref="researchDAO"></property>
+	</bean>
+	
+	
+	
+	<bean id="clockService" class="com.zhike.sql.servicesImpl.ClockServiceImpl">
+		<property name="clockDAO" ref="clockDAO"></property>
+	</bean>
+	
+	<bean id="liuyingService" class="com.zhike.sql.servicesImpl.LiuyingServiceImpl">
+		<property name="liuyingDAO" ref="liuyingDAO"></property>
+	</bean>
+	
+	<!-- service -->
+	<bean id="crawlerCategoryService" class="com.data.crawler.servicesImpl.CrawlerCategoryServiceImpl">
+		<property name="crawlerCategoryDAO" ref="crawlerCategoryDAO"></property>
+	</bean>
+	
+	<bean id="crawlerTaskForUserService" class="com.data.crawler.servicesImpl.CrawlerTaskForUserServiceImpl">
+		<property name="crawlerTaskForUserDAO" ref="crawlerTaskForUserDAO"></property>
+	</bean>
+	
+	<bean id="crawlerTaskForKeywordService" class="com.data.crawler.servicesImpl.CrawlerTaskForKeywordImpl">
+		<property name="crawlerTaskForKeywordDAO" ref="crawlerTaskForKeywordDAO"></property>
+	</bean>	
+	
+	<bean id="crawlerResultService" class="com.data.crawler.servicesImpl.CrawlerResultServiceImpl">
+		<property name="crawlerResultDAO" ref="crawlerResultDAO"></property>
+	</bean>
+
+	<!-- 登录的action -->
+	<bean id="managerAction" class="com.zhike.actions.UserAction" scope="prototype"></bean>
+	<bean id="wxDispatchAction" class="com.zhike.actions.DispatchAction" scope="prototype"></bean>
+	<bean id="tokenAction" class="com.zhike.actions.TokenAction" scope="prototype"></bean>
+	<bean id="materialAction" class="com.zhike.actions.MaterialAction" scope="prototype"></bean>
+	<bean id="menuAction" class="com.zhike.actions.MenuAction" scope="prototype"></bean>
+	<bean id="keywordsAction" class="com.zhike.actions.KeywordsAction" scope="prototype"></bean>
+	<bean id="guaguakaAction" class="com.zhike.actions.GuaguakaAction" scope="prototype"></bean>
+	<bean id="dazhuanpanAction" class="com.zhike.actions.DazhuanpanAction" scope="prototype"></bean>
+	<bean id="appAction" class="com.zhike.actions.APPAction" scope="prototype"></bean>
+	<bean id="editWebsiteAction" class="com.zhike.actions.EditWebsiteAction" scope="prototype"></bean>
+	<bean id="articlePrewAction" class="com.zhike.actions.ArticlePrewAction" scope="prototype"></bean>
+	<bean id="feedbackAction" class="com.zhike.actions.FeedbackAction" scope="prototype"></bean>
+	<!--预约 -->
+	<bean id="orderAction" class="com.zhike.actions.OrderAction" scope="prototype"></bean>
+	<!-- 微留言 -->
+	<bean id="messageAction" class="com.zhike.actions.MessageAction" scope="prototype"></bean>	
+	<!-- 微全景 -->
+	<bean id="quanjingAction" class="com.zhike.actions.QuanJingAction" scope="prototype"></bean>
+	<!-- 微相册 -->
+	<bean id="photoAction" class="com.zhike.actions.PhotoAction" scope="prototype"></bean>
+	<!-- 文件管理 -->
+	<bean id="fileAction" class="com.zhike.actions.FileAction" scope="prototype"></bean>
+	<!-- 微调研 -->
+	<bean id="researchAction" class="com.zhike.actions.ResearchAction" scope="prototype"></bean>	
+	<bean id="researchpersonAction" class="com.zhike.actions.ResearchPersonAction" scope="prototype"></bean>
+	<!--LBS -->
+	<bean id="lbsAction" class="com.zhike.actions.LBSAction" scope="prototype"></bean>
+	<!--会员卡WEB -->
+	<bean id="memberAction" class="com.zhike.actions.MemberAction" scope="prototype"></bean>
+	<!--会员卡WX -->
+	<bean id="memberWXAction" class="com.zhike.actions.MemberWXAction" scope="prototype"></bean>	
+	<!--重定向 -->
+	<bean id="redirectAction" class="com.zhike.actions.RedirectAction" scope="prototype"></bean>	
+	<!--事件-->
+	<bean id="linkAction" class="com.zhike.actions.LinkAction" scope="prototype"></bean>
+	<!--考勤-->
+	<bean id="clockAction" class="com.zhike.actions.ClockAction" scope="prototype"></bean>
+	<!--考勤WX-->
+	<bean id="clockWXAction" class="com.zhike.actions.ClockWXAction" scope="prototype"></bean>
+	<!--客服-->
+	<bean id="kefuAction" class="com.zhike.actions.KefuAction" scope="prototype"></bean>
+	<!-- crawler Action -->
+	<bean id="crawlerAction" class="com.data.crawler.CrawlerAction" scope="prototype"></bean>
+	<!--留影墙  & 留影墙WX -->
+	<bean id="liuyingAction" class="com.zhike.actions.LiuyingAction" scope="prototype"></bean>
+	<bean id="liuyingActionWX" class="com.zhike.actions.LiuyingWXAction" scope="prototype"></bean>
+	<!--实体会员卡接口 -->
+	<bean id="apiMemberAction" class="com.zhike.actions.ApiMemberAction" scope="prototype"></bean>
+
+</beans>

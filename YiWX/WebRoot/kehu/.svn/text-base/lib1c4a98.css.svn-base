@@ -1,0 +1,138 @@
+.dn {
+	DISPLAY: none
+}
+.di {
+	DISPLAY: inline
+}
+.dib {
+	DISPLAY: inline-block
+}
+.b_dib {
+	DISPLAY: inline-block
+}
+.db {
+	DISPLAY: block
+}
+.cell {
+	DISPLAY: table-cell
+}
+.vh {
+	VISIBILITY: hidden
+}
+.vv {
+	VISIBILITY: visible
+}
+.static {
+	POSITION: static
+}
+.rel {
+	POSITION: relative
+}
+.abs {
+	POSITION: absolute
+}
+.oh {
+	OVERFLOW: hidden
+}
+.z {
+	
+}
+.l {
+	FLOAT: left
+}
+.r {
+	FLOAT: right
+}
+.fn {
+	FLOAT: none
+}
+.cl {
+	CLEAR: both
+}
+.tc {
+	TEXT-ALIGN: center
+}
+.tr {
+	TEXT-ALIGN: right
+}
+.tl {
+	TEXT-ALIGN: left
+}
+.tj {
+	TEXT-JUSTIFY: distribute-all-lines; TEXT-ALIGN: justify; FONT-SIZE: 0px; TEXT-ALIGN-LAST: justify
+}
+.tj:after {
+	WIDTH: 100%; DISPLAY: inline-block; HEIGHT: 0px; FONT-SIZE: 0px; OVERFLOW: hidden; CONTENT: "."
+}
+.vt {
+	VERTICAL-ALIGN: top
+}
+.vm {
+	VERTICAL-ALIGN: middle
+}
+.vb {
+	VERTICAL-ALIGN: bottom
+}
+.f0 {
+	FONT-SIZE: 0px
+}
+.fa {
+	FONT-FAMILY: Arial
+}
+.fs {
+	FONT-FAMILY: SimSun
+}
+.fyh {
+	FONT-FAMILY: "Microsoft YaHei"
+}
+.indent {
+	TEXT-INDENT: 2em
+}
+.n {
+	FONT-STYLE: normal; FONT-WEIGHT: 400
+}
+.b {
+	FONT-WEIGHT: 700
+}
+.i {
+	FONT-STYLE: italic
+}
+.tdn {
+	TEXT-DECORATION: none
+}
+.tdn:hover {
+	TEXT-DECORATION: none
+}
+.poi {
+	CURSOR: pointer
+}
+.group {
+	
+}
+.group:after {
+	DISPLAY: block; HEIGHT: 0px; CLEAR: both; CONTENT: "\200B"
+}
+.clearfix {
+	
+}
+.clearfix:before {
+	DISPLAY: table; CONTENT: ''
+}
+.clearfix:after {
+	DISPLAY: table; CONTENT: ''
+}
+.clearfix:after {
+	CLEAR: both
+}
+.text_hide {
+	LINE-HEIGHT: 999em; OVERFLOW: hidden
+}
+.text_overflow {
+	TEXT-OVERFLOW: ellipsis; WHITE-SPACE: nowrap; OVERFLOW: hidden
+}
+.drop_hl_extra {
+	PADDING-LEFT: 999em; MARGIN-LEFT: -999em
+}
+.drop_vb_extra {
+	PADDING-BOTTOM: 999em; MARGIN-BOTTOM: -999em
+}

@@ -1,0 +1,48 @@
+#focus {
+	MARGIN-TOP: 15px; DISPLAY: none; HEIGHT: 180px
+}
+.gBox {
+	MARGIN: 15px auto 20px; BACKGROUND: url(./1000top.png) no-repeat; PADDING-TOP: 5px
+}
+.gBoxC {
+	BACKGROUND: url(./1000mid.png) repeat-y; OVERFLOW: auto
+}
+.gBoxB {
+	BACKGROUND: url(./1000btm.png) no-repeat; HEIGHT: 5px; FONT-SIZE: 0px
+}
+.caseType {
+	TEXT-ALIGN: center; WIDTH: 146px; MARGIN-LEFT: 5px; FONT-SIZE: 14px
+}
+.caseType LI {
+	LINE-HEIGHT: 30px; HEIGHT: 30px; CURSOR: pointer
+}
+.caseType LI.active {
+	BACKGROUND: url(./caseListbg.png) no-repeat; FONT-WEIGHT: bold
+}
+.caseBox {
+	WIDTH: 844px; BACKGROUND: url(./casebg.png) no-repeat; HEIGHT: 690px
+}
+#caseLogo {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 0px; PADDING-LEFT: 27px; PADDING-RIGHT: 0px; HEIGHT: 130px; OVERFLOW: hidden; PADDING-TOP: 25px
+}
+#caseLogo LI {
+	WIDTH: 100px; FLOAT: left; HEIGHT: 130px; MARGIN-RIGHT: 15px
+}
+#caseLogo .mix {
+	DISPLAY: none; opacity: 0
+}
+#caseLogo A {
+	WIDTH: 100%; DISPLAY: block; HEIGHT: 100%
+}
+#caseLogo A.on {
+	BACKGROUND: url(./caseLogoOn.png) no-repeat center bottom
+}
+#caseLogo SPAN {
+	TEXT-ALIGN: center; DISPLAY: block
+}
+#caseLogo IMG {
+	WIDTH: 80px; HEIGHT: 80px; border-radius: 40px
+}
+.caseCnt {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 22px; PADDING-RIGHT: 0px; BACKGROUND: url(./caseCnt.png) no-repeat 22px 0px; HEIGHT: 505px; OVERFLOW: hidden; PADDING-TOP: 0px
+}

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/order
+END
+order_manager.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/order/order_manager.jsp
+END
+order_list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/order/order_list.jsp
+END
+order_prew.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/order/order_prew.jsp
+END
+order_result.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/order/order_result.jsp
+END
+order_detail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/order/order_detail.jsp
+END
+order_edit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/order/order_edit.jsp
+END
+order_add.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/order/order_add.jsp
+END
+order_manager_result.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/order/order_manager_result.jsp
+END

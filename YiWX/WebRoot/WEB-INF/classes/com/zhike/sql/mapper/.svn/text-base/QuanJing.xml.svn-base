@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.QuanJingDAO">
+	<insert id="addNewQuanJing" parameterType="QuanJingBean" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO WX_QUANJING(APPID,TITLE,URL1,URL2,URL3,URL4,URL5,URL6,TIME,TEXT,KEYWORDS,UID,IMG)
+		VALUES(#{appid},#{title},#{url1},#{url2},#{url3},#{url4},#{url5},#{url6},now(),#{text},#{keywords},#{uid},#{img})
+	</insert>
+	
+	<select id="selectAllQuanJings" resultType="QuanJingBean" parameterType="QuanJingBean">
+		SELECT * FROM WX_QUANJING W WHERE W.APPID = #{appid}
+		<if test="title != ''">
+		<![CDATA[and title like '%${title}%' ]]>
+		</if>
+		ORDER BY ID DESC LIMIT #{from},#{count} 
+	</select>
+	
+	<delete id="delOneQuanJing" parameterType="QuanJingBean">
+		DELETE FROM WX_QUANJING WHERE id= #{id}
+	</delete>
+	
+	<update id="updateQuanJing" parameterType="QuanJingBean">
+		UPDATE WX_QUANJING
+		SET title = #{title},url1 = #{url1},url2 = #{url2},url3 = #{url3},url4 = #{url4},url5 = #{url5},url6 = #{url6},time = now(),text = #{text},keywords = #{keywords},img = #{img}
+		WHERE id = #{id}
+	</update>
+	
+	<select id="selectCountInfosByPage" resultType="int">
+		SELECT count(*) FROM WX_QUANJING WHERE  APPID = #{appid} 
+		<if test="title != ''">
+		<![CDATA[and title like '%${title}%' ]]>
+		</if>
+	 </select>	
+	 
+	 <select id="getQuanJing" resultType="QuanJingBean">
+		SELECT * FROM WX_QUANJING WHERE id= #{id}
+	</select>	
+	
+</mapper>

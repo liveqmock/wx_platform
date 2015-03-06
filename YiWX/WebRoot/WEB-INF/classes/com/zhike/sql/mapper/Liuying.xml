@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.LiuyingDAO">
+
+	 <!-- WEB -->
+	 
+	<select id="selectAllByAppID" resultType="LiuyingBean">
+		SELECT * FROM WX_LIUYING WHERE APP_ID = #{app_id} ORDER BY id DESC
+	</select>
+	
+	<select id="selectOneLiuyingById" resultType="LiuyingBean">
+		SELECT * FROM WX_LIUYING WHERE id = #{id} 
+	</select>
+	
+	<update id="updateOneLiuyingById" parameterType="LiuyingBean">
+		UPDATE LOW_PRIORITY WX_LIUYING
+		SET keywords = #{keywords},title = #{title},img = #{img},desc_service = #{desc_service}, updatetime = now()
+		WHERE id = #{id} 
+	</update>	
+	
+	
+	
+	<insert id="insertOneLiuying" parameterType="LiuyingBean" useGeneratedKeys="true" keyProperty="id">
+	 	INSERT INTO WX_LIUYING
+	 	(app_id,keywords,title,img,desc_service,createtime,updatetime)
+	 	VALUES
+	 	(#{app_id},#{keywords},#{title},#{img},#{desc_service},now(),now())
+	 </insert>	
+	 
+	
+	 <select id="selectCountInfosByPage" resultType="int">
+		SELECT count(*) FROM WX_LIUYING_INFO WHERE  SERVICE_ID = #{service_id} 
+	 </select>	
+
+	 <select id="selectInfosByPage" resultType="LiuyingInfoBean">
+		SELECT * FROM WX_LIUYING_INFO WHERE  SERVICE_ID = #{service_id} 
+		ORDER BY id DESC
+		LIMIT #{from},#{count} 
+	 </select>	
+	 
+	 
+	 <select id="selectLiuyingInfoByServiceId" resultType="LiuyingInfoBean">
+		SELECT * FROM WX_LIUYING_INFO WHERE  SERVICE_ID = #{service_id} 
+	 </select>	
+	 
+	 
+	  <select id="selectOneLiuyingInfoById" resultType="LiuyingInfoBean">
+		SELECT * FROM WX_LIUYING_INFO WHERE  id = #{id} 
+	 </select>	
+	 
+	 
+	 
+	 
+	 <delete id="delOneInfoById" parameterType="LiuyingInfoBean">
+	 	DELETE FROM WX_LIUYING_INFO WHERE id = #{id}
+	 </delete>
+	 
+	 <delete id="delInfosByServiceId" parameterType="LiuyingInfoBean">
+	 	DELETE FROM WX_LIUYING_INFO WHERE service_id = #{service_id}
+	 </delete>
+	 
+	 
+	 <delete id="delOneLiuyingById" parameterType="LiuyingBean">
+	 	DELETE FROM WX_LIUYING WHERE id = #{id}
+	 </delete>
+	 	 
+	 <!-- WX -->
+	 
+	 	<!-- 后台 分页 -->
+	 <select id="selectCountLiuyingByPage" resultType="int">
+		SELECT count(*) FROM wx_liuying_info  
+		WHERE service_id = #{service_id}
+	  
+	 </select>	
+
+	 <select id="selectLiuyingByPage" resultType="LiuyingInfoBean">
+		SELECT * FROM wx_liuying_info 
+		WHERE service_id = #{service_id}
+		ORDER BY id DESC	
+		LIMIT #{from},#{count} 
+	 </select>	
+	 
+	 
+	 <insert id="insertOneLiuyingInfo" parameterType="LiuyingInfoBean" >
+	 	INSERT INTO wx_liuying_info
+	 	(service_id,name,head_img,liuyan,liuying,createtime,updatetime)
+	 	VALUES
+	 	(#{service_id},CAST(#{name} AS CHAR CHARACTER SET gbk),#{head_img},CAST(#{liuyan} AS CHAR CHARACTER SET gbk),#{liuying},now(),now())
+	 </insert>	
+	 
+	 
+	
+</mapper>

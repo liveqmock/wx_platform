@@ -1,0 +1,111 @@
+.account {
+	FLOAT: right; FONT-SIZE: 0px; PADDING-TOP: 10px
+}
+.account A {
+	COLOR: #222
+}
+.account A:hover {
+	COLOR: #2e7dc6
+}
+.account A.account_primary_link {
+	COLOR: #2e7dc6
+}
+.account_meta {
+	DISPLAY: inline-block; FONT-SIZE: 14px; VERTICAL-ALIGN: top
+}
+.account_info {
+	POSITION: relative; MARGIN-RIGHT: 5px
+}
+.account_info .avatar {
+	POSITION: absolute; BACKGROUND-COLOR: #f0f0f0; WIDTH: 38px; HEIGHT: 38px; TOP: 0px; LEFT: -50px; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px
+}
+.account_info .type {
+	POSITION: absolute; TOP: 2px; LEFT: 0px
+}
+.account_info .nickname {
+	FONT-STYLE: normal; MARGIN-TOP: 18px; DISPLAY: inline-block; FONT-WEIGHT: 400
+}
+.account_inbox {
+	Z-INDEX: 1; POSITION: relative; MARGIN-TOP: 1px; FONT-SIZE: 11px
+}
+.on.account_inbox .account_inbox_switch {
+	Z-INDEX: 1; POSITION: relative; BORDER-BOTTOM-COLOR: #adadad; BACKGROUND-COLOR: #eee; BORDER-TOP-COLOR: #adadad; BORDER-RIGHT-COLOR: #adadad; BORDER-LEFT-COLOR: #adadad; border-top-left-radius: 3px; -moz-border-radius-topleft: 3px; -webkit-border-top-left-radius: 3px; border-top-right-radius: 3px; -moz-border-radius-topright: 3px; -webkit-border-top-right-radius: 3px
+}
+.account_inbox_switch {
+	BORDER-BOTTOM: transparent 0px solid; TEXT-ALIGN: center; BORDER-LEFT: transparent 1px solid; LINE-HEIGHT: 49px; WIDTH: 45px; DISPLAY: block; HEIGHT: 49px; BORDER-TOP: transparent 1px solid; BORDER-RIGHT: transparent 1px solid
+}
+.account_inbox_switch:hover {
+	TEXT-DECORATION: none
+}
+.account_inbox_switch I.icon_common {
+	MARGIN-TOP: 16px; VERTICAL-ALIGN: top; CURSOR: pointer
+}
+.account_inbox_switch I.inbox {
+	
+}
+.account_inbox_switch I.notices {
+	MARGIN-LEFT: -12px
+}
+.account_message_box {
+	BORDER-BOTTOM: #adadad 1px solid; POSITION: absolute; BORDER-LEFT: #adadad 1px solid; PADDING-BOTTOM: 0.5em; BACKGROUND-COLOR: #eee; MARGIN-TOP: -1px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: #adadad 1px solid; TOP: 100%; RIGHT: 0px; BORDER-RIGHT: #adadad 1px solid; PADDING-TOP: 0.5em; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-top-left-radius: 0; -moz-border-radius-topleft: 0; -webkit-border-top-left-radius: 0; border-top-right-radius: 0; -moz-border-radius-topright: 0; -webkit-border-top-right-radius: 0
+}
+.account_message_box UL {
+	WIDTH: 190px
+}
+.account_message_box LI {
+	MIN-HEIGHT: 32px
+}
+.account_message_link {
+	POSITION: relative; LINE-HEIGHT: 32px; PADDING-LEFT: 1em; DISPLAY: block
+}
+.account_message_link STRONG {
+	FONT-STYLE: normal; WIDTH: auto; TEXT-OVERFLOW: ellipsis; DISPLAY: block; WHITE-SPACE: nowrap; OVERFLOW: hidden; CURSOR: pointer; FONT-WEIGHT: 400; MARGIN-RIGHT: 4em
+}
+.account_message_link .read_more {
+	POSITION: absolute; COLOR: #2e7dc6; TOP: 0px; CURSOR: pointer; RIGHT: 1em
+}
+.account_message_link:hover {
+	BACKGROUND-COLOR: #eee; TEXT-DECORATION: none
+}
+.btn_inbox_closed.btn {
+	BORDER-BOTTOM-COLOR: #c3c3c3; LINE-HEIGHT: 24px; BACKGROUND-COLOR: #f4f4f4; BORDER-TOP-COLOR: #c3c3c3; MARGIN: 0.5em 1em 0px; PADDING-LEFT: 0px; WIDTH: auto; PADDING-RIGHT: 0px; DISPLAY: block; HEIGHT: 24px; COLOR: #000; BORDER-RIGHT-COLOR: #c3c3c3; FONT-SIZE: 11px; BORDER-LEFT-COLOR: #c3c3c3
+}
+.btn_inbox_closed.btn:hover {
+	BACKGROUND-COLOR: #f8f8f8; COLOR: #000; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
+}
+.btn_inbox_closed.btn BUTTON {
+	COLOR: #000
+}
+.btn_inbox_closed.btn:hover {
+	COLOR: #222
+}
+.account_logout A {
+	BORDER-LEFT: #adadad 1px solid; MARGIN-TOP: 18px; PADDING-LEFT: 14px; DISPLAY: inline-block; MARGIN-LEFT: -1px; box-shadow: inset 1px 0 0 0 #fff; -moz-box-shadow: inset 1px 0 0 0 #fff; -webkit-box-shadow: inset 1px 0 0 0 #fff
+}
+.account_faq {
+	PADDING-TOP: 18px
+}
+.account_faq A {
+	DISPLAY: inline-block
+}
+.logo {
+	FLOAT: left; FONT-SIZE: 24px; PADDING-TOP: 8px
+}
+.logo A {
+	WIDTH: 248px; DISPLAY: block; HEIGHT: 40px; OVERFLOW: hidden; TEXT-DECORATION: none
+}
+.logo A:before {
+	DISPLAY: inline-block; CONTENT: url(/mpres/htmledition/images/bg/bg_logo1c01ee.png)
+}
+.head .inner {
+	HEIGHT: 60px
+}
+.head .inner:after {
+	DISPLAY: block; HEIGHT: 0px; CLEAR: both; CONTENT: "\200B"
+}
+.head .wrp.inner {
+	WIDTH: 1000px; MARGIN-LEFT: auto; MARGIN-RIGHT: auto
+}
+.head_box {
+	BORDER-BOTTOM: #c3c3c3 1px solid; POSITION: relative; BACKGROUND-COLOR: #f3f3f3; BORDER-TOP: #67ad03 4px solid; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15), inset 0 -1px 0 0 #fcfcfc; -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15), inset 0 -1px 0 0 #fcfcfc; -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15), inset 0 -1px 0 0 #fcfcfc
+}

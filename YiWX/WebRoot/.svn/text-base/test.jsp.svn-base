@@ -1,0 +1,527 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@page import="com.zhike.sql.beans.CheckLoginBean"%>
+<%@page import="com.zhike.finals.Constat"%>
+<%
+	String path = request.getContextPath();
+%>
+
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://www.weixinguanjia.com/weixin-7-1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" charset="utf-8" async="" src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/contains.js"></script><script type="text/javascript" charset="utf-8" async="" src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/taskMgr.js"></script><script type="text/javascript" charset="utf-8" async="" src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/views.js"></script>
+	<meta charset="UTF-8">
+<title>区域代理 - 微信管家—国内最大的微信公众服务平台</title>
+<meta name="keywords" content="微管家,微信营销,微信代运营,微信托管,微网站,微商城,微营销,微信定制开发">
+<meta name="description" content="微信管家,国内最大的微信公众智能服务平台,管家十大微体系:微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计、微支付、微客服,企业微营销必备。">
+<link href="http://www.weixinguanjia.com/favicon.ico" rel="shortcut icon">
+<link href="http://www.weixinguanjia.com/favicon.ico" rel="icon">
+<link href="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/base.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/jquery.tools.min.js"></script>
+	<link href="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/agent.css" rel="stylesheet" type="text/css">
+</head>
+<body><iframe style="display: none;"></iframe><style type="text/css">.WPA3-SELECT-PANEL { z-index:2147483647; width:463px; height:292px; margin:0; padding:0; border:1px solid #d4d4d4; background-color:#fff; border-radius:5px; box-shadow:0 0 15px #d4d4d4;}.WPA3-SELECT-PANEL * { position:static; z-index:auto; top:auto; left:auto; right:auto; bottom:auto; width:auto; height:auto; max-height:auto; max-width:auto; min-height:0; min-width:0; margin:0; padding:0; border:0; clear:none; clip:auto; background:transparent; color:#333; cursor:auto; direction:ltr; filter:; float:none; font:normal normal normal 12px "Helvetica Neue", Arial, sans-serif; line-height:16px; letter-spacing:normal; list-style:none; marks:none; overflow:visible; page:auto; quotes:none; -o-set-link-source:none; size:auto; text-align:left; text-decoration:none; text-indent:0; text-overflow:clip; text-shadow:none; text-transform:none; vertical-align:baseline; visibility:visible; white-space:normal; word-spacing:normal; word-wrap:normal; -webkit-box-shadow:none; -moz-box-shadow:none; -ms-box-shadow:none; -o-box-shadow:none; box-shadow:none; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0; border-radius:0; -webkit-opacity:1; -moz-opacity:1; -ms-opacity:1; -o-opacity:1; opacity:1; -webkit-outline:0; -moz-outline:0; -ms-outline:0; -o-outline:0; outline:0; -webkit-text-size-adjust:none; font-family:Microsoft YaHei,Simsun;}.WPA3-SELECT-PANEL a { cursor:auto;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-TOP { height:25px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CLOSE { float:right; display:block; width:47px; height:25px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CLOSE:hover { background-position:0 -25px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-MAIN { padding:23px 20px 45px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-GUIDE { margin-bottom:42px; font-family:"Microsoft Yahei"; font-size:16px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-SELECTS { width:246px; height:111px; margin:0 auto;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CHAT { float:right; display:block; width:88px; height:111px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat 0 -80px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-CHAT:hover { background-position:-88px -80px;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-AIO-CHAT { float:left;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-QQ { display:block; width:76px; height:76px; margin:6px; background:url(http://combo.b.qq.com/crm/wpa/release/3.3/wpa/views/SelectPanel-sprites.png) no-repeat -50px 0;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-QQ-ANONY { background-position:-130px 0;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-LABEL { display:block; padding-top:10px; color:#00a2e6; text-align:center;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-BOTTOM { padding:0 20px; text-align:right;}.WPA3-SELECT-PANEL .WPA3-SELECT-PANEL-INSTALL { color:#8e8e8e;}</style><style type="text/css">.WPA3-CONFIRM { z-index:2147483647; width:285px; height:141px; margin:0; background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR0AAACNCAMAAAC9pV6+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjU5QUIyQzVCNUIwQTExRTJCM0FFRDNCMTc1RTI3Nzg4IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjU5QUIyQzVDNUIwQTExRTJCM0FFRDNCMTc1RTI3Nzg4Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NTlBQjJDNTk1QjBBMTFFMkIzQUVEM0IxNzVFMjc3ODgiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NTlBQjJDNUE1QjBBMTFFMkIzQUVEM0IxNzVFMjc3ODgiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6QoyAtAAADAFBMVEW5xdCkvtNjJhzf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) no-repeat;}.WPA3-CONFIRM { *background-image:url(http://combo.b.qq.com/crm/wpa/src/wpa/views/panel.png);}.WPA3-CONFIRM * { position:static; z-index:auto; top:auto; left:auto; right:auto; bottom:auto; width:auto; height:auto; max-height:auto; max-width:auto; min-height:0; min-width:0; margin:0; padding:0; border:0; clear:none; clip:auto; background:transparent; color:#333; cursor:auto; direction:ltr; filter:; float:none; font:normal normal normal 12px "Helvetica Neue", Arial, sans-serif; line-height:16px; letter-spacing:normal; list-style:none; marks:none; overflow:visible; page:auto; quotes:none; -o-set-link-source:none; size:auto; text-align:left; text-decoration:none; text-indent:0; text-overflow:clip; text-shadow:none; text-transform:none; vertical-align:baseline; visibility:visible; white-space:normal; word-spacing:normal; word-wrap:normal; -webkit-box-shadow:none; -moz-box-shadow:none; -ms-box-shadow:none; -o-box-shadow:none; box-shadow:none; -webkit-border-radius:0; -moz-border-radius:0; -ms-border-radius:0; -o-border-radius:0; border-radius:0; -webkit-opacity:1; -moz-opacity:1; -ms-opacity:1; -o-opacity:1; opacity:1; -webkit-outline:0; -moz-outline:0; -ms-outline:0; -o-outline:0; outline:0; -webkit-text-size-adjust:none;}.WPA3-CONFIRM * { font-family:Microsoft YaHei,Simsun;}.WPA3-CONFIRM .WPA3-CONFIRM-TITLE { height:40px; margin:0; padding:0; line-height:40px; color:#2b6089; font-weight:normal; font-size:14px; text-indent:80px;}.WPA3-CONFIRM .WPA3-CONFIRM-CONTENT { height:55px; margin:0; line-height:55px; color:#353535; font-size:14px; text-indent:29px;}.WPA3-CONFIRM .WPA3-CONFIRM-PANEL { height:30px; margin:0; padding-right:16px; text-align:right;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON { position:relative; display:inline-block!important; display:inline; zoom:1; width:99px; height:30px; margin-left:10px; line-height:30px; color:#000; text-decoration:none; font-size:12px; text-align:center;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON-FOCUS { width:78px;}.WPA3-CONFIRM .WPA3-CONFIRM-BUTTON .WPA3-CONFIRM-BUTTON-TEXT { line-height:30px; text-align:center; cursor:pointer;}.WPA3-CONFIRM-CLOSE { position:absolute; top:7px; right:7px; width:10px; height:10px; cursor:pointer;}</style>
+	<div id="header">
+	<div class="g">
+		<div id="logo" class="l">
+			<a href="http://www.weixinguanjia.com/" title="微信管家—国内最大的微信公众服务平台"></a>
+		</div>
+		<ul id="nav" class="l">
+			<li><a href="http://www.weixinguanjia.com/">首页</a></li>
+			<li><a href="http://www.weixinguanjia.com/weixin-1-1.html">功能</a></li>
+			<li><a href="http://www.weixinguanjia.com/weixin-2-1.html">案例</a></li>
+			<li><a href="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/区域代理 - 微信管家—国内最大的微信公众服务平台.htm" class="on">招商</a></li>
+			<li><a href="http://www.weixinguanjia.com/weixin-3-1.html">关于</a></li>
+		</ul>
+		<div id="loginBox" class="r">
+			<a href="http://www.weixinguanjia.cn/login.html" target="_blank" class="loginBtn" rel="#ologinBox">登陆</a>
+			<a href="http://www.weixinguanjia.cn/reg.html" target="_blank" class="regBtn">注册</a>
+		</div>
+	</div>
+</div>	<div class="g focus">
+		<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/20140104105445810.png" alt="招商">
+	</div>
+	<div class="g agentCnt">
+		<div class="agntC ac1">
+			<h3>成为代理商的条件</h3>
+			<div class="acCnt">
+				<p>
+					　　以城市为单位，每个代理商可申请其公司或业务所在地的一个城市的代理资格。每个一线城市及省会城市原则上最多可同时有3家代理，每个非一线城市或省会城市的地级市原则上最多可同时有2家代理。成为代理商的条件如下：
+				</p>
+				<ul>
+					<li>
+						<div><img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/ac_zc.png" alt="注册资质"></div>
+						<p>拥有正规公司资质</p>
+					</li>
+					<li>
+						<div><img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/ac_td.png" alt="营销团队"></div>
+						<p>有专门团队负责，有强劲的销售推广能力</p>
+					</li>
+					<li style="margin-right:0">
+						<div><img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/ac_zy.png" alt="市场资源"></div>
+						<p>有良好的客户资源，快速将微信管家产品导入之前的客户中</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="agntC ac2">
+			<h3>给予代理商的支持</h3>
+			<ul>
+				<li>
+					<div class="btn_img img1"></div>
+					<h4>广告宣传支持</h4>
+				</li>
+				<li>
+					<div class="btn_img img2"></div>
+					<h4>业务分配支持</h4>
+				</li>
+				<li>
+					<div class="btn_img img3"></div>
+					<h4>会议讲师支持</h4>
+				</li>
+				<li>
+					<div class="btn_img img4"></div>
+					<h4>会务管理支持</h4>
+				</li>
+				<li class="mr0">
+					<div class="btn_img img5"></div>
+					<h4>场地建议支持</h4>
+				</li>
+
+				<li>
+					<div class="btn_img img6"></div>
+					<h4>流程监控支持</h4>
+				</li>
+				<li>
+					<div class="btn_img img7"></div>
+					<h4>业务培训支持</h4>
+				</li>
+				<li>
+					<div class="btn_img img8"></div>
+					<h4>技术咨询支持</h4>
+				</li>
+				<li>
+					<div class="btn_img img9"></div>
+					<h4>企划物料支持</h4>
+				</li>
+				<li class="mr0">
+					<div class="btn_img img10"></div>
+					<h4>团队建设支持</h4>
+				</li>
+
+				<li>
+					<div class="btn_img img11"></div>
+					<h4>演示帐号支持</h4>
+				</li>
+				<li>
+					<div class="btn_img img12"></div>
+					<h4>团队培训支持</h4>
+				</li>
+				<li>
+					<div class="btn_img img13"></div>
+					<h4>业务运营支持</h4>
+				</li>
+				<li>
+					<div class="btn_img img14"></div>
+					<h4>企业管理支持</h4>
+				</li>
+				<li class="mr0">
+					<div class="btn_img img15"></div>
+					<h4>业务制作支持</h4>
+				</li>
+			</ul>
+		</div>
+		<div class="agntC ac3">
+			<h3>代理优势</h3>
+			<ul>
+				<li>
+					<h4>操作简洁</h4>
+					<div>微信管家平台的管理界面简单易用、操作方便，人性化设计。</div>
+				</li>
+				<li>
+					<h4>功能强大</h4>
+					<div>（十大微体系、二十项微行业）行业内功能最全、更多功能持续升级中…</div>
+				</li>
+				<li>
+					<h4>专业团队</h4>
+					<div>一站式管理，平台支持，拥有多年网络营销经验的管理团队，强大的技术支持，专注于社会化媒体的研究。</div>
+				</li>
+				<li>
+					<h4>资深背景</h4>
+					<div>微信管家是上市公司掌中宝投资（股票代码：100189），为商家提供一个更智能、更便捷的微信公众智能服务平台。</div>
+				</li>
+				<li>
+					<h4>价格优势</h4>
+					<div>微信管家在同行业中同等品质价格最低，真正让加盟商获得最大利益。</div>
+				</li>
+				<li>
+					<h4>企业资质</h4>
+					<div>行业内唯一具备（全国增值电信业务经营许可证：B2-20130230）</div>
+				</li>
+				<li>
+					<h4>实战经验</h4>
+					<div>全国12家直营分公司、同行业内唯一具备实地销售经验、复制一个成功一个。</div>
+				</li>
+				<li>
+					<h4>加盟支持</h4>
+					<div>区域客户分配支持、广告支持、培训支持、会议支持、业务拓展支持、技术支持、资料支持、演示账户支持、7*12小服务支持。</div>
+				</li>
+			</ul>
+		</div>
+		<div class="agntC ac4">
+			<h3>加盟流程</h3>
+		</div>
+		<div class="agntC ac5" id="agcnts">
+			<h3>联系渠道经理  加入我们</h3>
+			<div class="acCnt">
+				
+				<table width="700" class=" noBorderTable" id="qdjl" border="0">
+<tbody>
+<tr>
+<th width="140" align="center" valign="middle" scope="col">
+渠道经理
+</th>
+<th align="center" valign="middle" scope="col">
+地区
+</th>
+<th align="center" valign="middle" scope="col">
+QQ
+</th>
+<th width="150" align="center" valign="middle" scope="col">
+手机号
+</th>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+韩经理
+</td>
+<td align="center" valign="middle">
+天津、浙江、福建
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 13721993309
+</td>
+<td width="150" align="center" valign="middle">
+13721993309
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+刘经理
+</td>
+<td align="center" valign="middle">
+河南、海南
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 2284429425
+</td>
+<td width="150" align="center" valign="middle">
+15192889266
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+白经理
+</td>
+<td align="center" valign="middle">
+江苏、广东、山东
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 2548041387
+</td>
+<td width="150" align="center" valign="middle">
+15563670083
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+邵经理
+</td>
+<td align="center" valign="middle">
+上海、贵州
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 297099787
+</td>
+<td width="150" align="center" valign="middle">
+15265178343
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+密经理
+</td>
+<td align="center" valign="middle">
+北京、青海
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 603358746
+</td>
+<td width="150" align="center" valign="middle">
+18266734332
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+李经理
+</td>
+<td align="center" valign="middle">
+安徽、西藏
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 2033304558
+</td>
+<td width="150" align="center" valign="middle">
+18669908233
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+尚经理
+</td>
+<td align="center" valign="middle">
+云南、山西
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 2628236060
+</td>
+<td width="150" align="center" valign="middle">
+15269968710
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+王经理
+</td>
+<td align="center" valign="middle">
+陕西
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 2293685909
+</td>
+<td width="150" align="center" valign="middle">
+18691874555
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+宋经理
+</td>
+<td align="center" valign="middle">
+河北
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 2811136837
+</td>
+<td width="150" align="center" valign="middle">
+18678867333
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+王经理
+</td>
+<td align="center" valign="middle">
+宁夏、甘肃、广西
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 1498763704
+</td>
+<td width="150" align="center" valign="middle">
+15053954150
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+徐经理
+</td>
+<td align="center" valign="middle">
+内蒙、湖北
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 393356618
+</td>
+<td width="150" align="center" valign="middle">
+18678400096
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+覃经理
+</td>
+<td align="center" valign="middle">
+湖南、四川、新疆
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 1469935569
+</td>
+<td width="150" align="center" valign="middle">
+18678478893
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+范经理
+</td>
+<td align="center" valign="middle">
+江西、重庆
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 2383164387
+</td>
+<td width="150" align="center" valign="middle">
+15589104954
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+蒋经理
+</td>
+<td align="center" valign="middle" rowspan="2" colspan="1">
+辽宁、吉林、黑龙江<br>
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 553646254
+</td>
+<td width="150" align="center" valign="middle">
+13331627627
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+马经理
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 717588212
+</td>
+<td width="150" align="center" valign="middle">
+15584083789
+</td>
+</tr>
+<tr>
+<td width="140" align="center" valign="middle">
+郭经理
+</td>
+<td align="center" valign="middle">
+香港、澳门、台湾、海外
+</td>
+<td align="center" valign="middle">
+<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue_24X24.png"> 330169788
+</td>
+<td width="150" align="center" valign="middle">
+18615392555
+</td>
+</tr>
+</tbody>
+</table>
+				
+			</div>
+		</div>
+	</div>
+
+	<div id="ologinBox"><a class="close"></a>
+	<h3>登录</h3>
+	<form action="http://www.weixinguanjia.cn/" method="post">
+		<ul>
+			<li>
+				<input type="text" value="" name="fT08d9e827ffbba2efe4413cb064bbf847un" id="fun" tabindex="1" class="ipt tipinput1" placeholder="微信管家账号" autocomplete="off" maxlength="100" suggestwidth="340px">
+			</li>
+			<li class="l2">
+				<input type="password" value="" name="fT08d9e827ffbba2efe4413cb064bbf847pwd" id="fpwd" tabindex="2" class="ipt tipinput1" placeholder="请输入您的密码" maxlength="20" autocomplete="off">
+			</li>
+			<li class="l3"><a href="http://www.weixinguanjia.cn/findpwd2.html">忘记密码？</a></li>
+			<li class="l4"><input type="submit" tabindex="4" id="btn-login" value=""></li>
+		</ul>
+	</form>
+	<div class="loginLink">
+		<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&scope=get_user_info,add_t,add_idol,del_t,add_share&client_id=100543439&redirect_uri=http://www.weixinguanjia.cn&state=qqreg" class="l"><img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/bt_blue.png" style="vertical-align:top;width:76px;height:24px;"></a>
+		<a href="http://www.weixinguanjia.cn/reg.html" class="r">注册新帐号</a>
+	</div>
+</div>
+<div id="footer">
+	<div class="g fnavBox">
+		<ul class="fnav l">
+			<li class="liblock">
+				<h3><a href="http://www.weixinguanjia.com/weixin-3-1.html">关于我们</a></h3>
+				<ul>
+					<li><a href="http://www.weixinguanjia.com/weixin-4-1.html">开发团队</a></li>
+					<li><a href="http://www.weixinguanjia.com/weixin-5-1.html">服务支持</a></li>
+					<li><a href="http://www.weixinguanjia.com/index.php?m=content&c=index&a=lists&catid=6">最新动态</a></li>
+				</ul>
+			</li>
+			<li class="liblock">
+				<h3><a href="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/区域代理 - 微信管家—国内最大的微信公众服务平台.htm">渠道代理</a></h3>
+				<ul>
+					<li><a href="http://www.weixinguanjia.com/weixin-7-1.html#agcnts">成为代理</a></li>
+					<li>代理查询</li>
+					<li><a href="http://weixinguanjia.cn/agencyAdmin/login.html">代理登陆</a></li>
+				</ul>
+			</li>
+			<li class="liblock">
+				<h3>关注我们</h3>
+				<ul>
+					<li><a href="http://e.weibo.com/dxcxcn" target="_blank"><img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/t_xl.ico"> 新浪微博</a></li>
+					<li><a href="http://t.qq.com/dxcxcn" target="_blank"><img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/t_qq.ico"> 腾讯微博</a></li>
+					<li><a href="http://t.163.com/dxcxcn" target="_blank"><img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/t_163.ico"> 网易微博</a></li>
+				</ul>
+			</li>
+			<li class="liblock liblock4">
+				<h3><a href="http://www.weixinguanjia.com/weixin-13-1.html">联系我们</a></h3>
+				<ul>
+					<li>客服热线</li>
+					<li class="green fs24">400-623-2003</li>
+					<li><a href="http://www.weixinguanjia.com/weixin-7-1.html#agcnts">联系渠道经理</a></li>
+				</ul>
+			</li>
+		</ul>
+		<div class="dcode r">
+			<img src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/code.png" alt="管家团队">
+		</div>
+	</div>
+	<div class="cooperative"></div>
+	<div class="g">
+		<div class="cpr hc">
+			<a href="http://www.weixinguanjia.com/weixin-14-1.html">法律说明</a>
+			<a href="http://www.miibeian.gov.cn/" target="_blank">鲁ICP备10204446号</a>
+			<a href="http://www.weixinguanjia.com/index.php?m=content&c=index&a=show&catid=15&id=1">全国增值电信业务经营许可证B2-20130230</a>
+			<span>Copyright © 2014  掌中宝  版权所有</span>
+		</div>
+	</div>
+</div>
+<script charset="utf-8" src="./区域代理 - 微信管家—国内最大的微信公众服务平台_files/wpa.php"></script>
+<div id="service">
+	<a href="http://www.weixinguanjia.cn/reg.html" class="srvLog" target="_blank">申请试用</a>
+	<a class="srvCns" id="BizQQWPA">在线咨询</a>
+		<a class="goTop" id="goTop" title="返回顶部" style="display: block;">返回顶部</a>
+</div>
+<script type="text/javascript">
+	BizQQWPA.addCustom({aty: '0', a: '0', nameAccount: 4006232003, selector: 'BizQQWPA'});
+	$(window).scroll(function(){
+		if ($(window).scrollTop()>200){
+			$('#goTop').fadeIn();
+		}else if($(window).scrollTop()<200){
+			$('#goTop').fadeOut();
+		}
+	});
+	$('#goTop').click(function() {
+		$("html, body").animate({scrollTop:0}, 200);
+	});
+	$(".loginBtn").overlay({
+		mask:'#3fa9f5',
+		effect: 'apple',
+		top:"center",
+		onLoad: function(){
+			$("#fun").focus();
+		}
+	});
+</script>
+<!--[if IE]>
+	<script src="http://www.weixinguanjia.com/statics/js/green/DD_belatedPNG.js"></script>
+	<script>
+		DD_belatedPNG.fix('.png24');
+		DD_belatedPNG.fix('.close');
+	</script>
+<![endif]-->
+
+
+
+</body></html>

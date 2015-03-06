@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.multipart.maxSize" value="5242880" />
+	<constant name="struts.action.extension" value="action"></constant>
+	
+	
+	<package name="struts2" namespace="/"
+		extends="struts-default,jfreechart-default">
+		
+		<interceptors>
+			<interceptor name="checklogin"
+				class="com.zhike.interceptor.CheckLoginInterceptor">
+			</interceptor>
+			<!--微信应用拦截器 -->
+			<interceptor name="checkwxsession"
+				class="com.zhike.interceptor.CheckWxSessionInterceptor">
+			</interceptor>
+		</interceptors>
+
+				
+		<default-action-ref name="notFound" />
+		
+		<global-results>
+			<result name="user_login" type="dispatcher">
+				/session.jsp
+			</result>
+			<result name="wxuser_login" type="redirectAction">
+				redirect.action
+			</result>	
+			<result name="wxuser_error">/errorPageMobile.jsp</result>		
+		</global-results>
+		
+<!--  	<global-results>
+			<result name="FREESEARCH" type="dispatcher">
+				/WEB-INF/free/free_search.jsp
+			</result>
+			
+			<result name="get_token" type="dispatcher">
+				/home.jsp
+			</result>
+			<result name="over_call_limit" type="dispatcher">
+				/over_call_limit.jsp
+			</result>
+			<result name="test" type="dispatcher">
+			</result>
+		</global-results>-->	
+		
+		
+		
+
+		<!-- 搜索用户-->
+		<action name="manager" method="execute" class="managerAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success">/guanlizhanghu.jsp</result>
+		</action>
+		
+		<action name="login" method="login" class="managerAction">
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>
+		
+		<action name="loginOut" method="loginOut" class="managerAction">
+			<result name="success">/session.jsp</result>
+		</action>
+		
+		<action name="regNewUser" method="regNewUser" class="managerAction">
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="tokenCreatorAction" method="execute" class="tokenAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="showAppKeys" method="selectAllAppsByUserId" class="tokenAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success">/gongzhonghao.jsp</result>
+		</action>
+		
+		<action name="tokenEditAction" method="editApp" class="tokenAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="tokenDelAction" method="delApp" class="tokenAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="selectAppByUserIdAndAppId" method="selectAppByUserIdAndAppId" class="tokenAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success">/wx/wx_account.jsp</result>
+			<result name="error">/session.jsp</result>
+		</action>
+		
+		
+		<action name="deleteAppKey" method="deleteAppByUserIdAndAPPID" class="tokenAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success" type="redirectAction">showAppKeys</result>
+		</action>
+		
+		<action name="manageApp" method="manageApp" class="appAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success">/wx_wechat/wx_manager.jsp</result>
+		</action>
+		
+		
+		
+		<action name="dispatch" method="execute" class="wxDispatchAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="gerenxinxi">/gerenxinxi.jsp</result>
+			<result name="guanli">/guanli.jsp</result>
+			<result name="chongzhi">/chongzhi.jsp</result>
+			<result name="add_app">/add_app.jsp</result>
+			<result name="error">/session.jsp</result>
+		</action>
+		
+		<action name="gerenxinxi" method="updategerenxinxi" class="wxDispatchAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="sucai_mulite" method="sucai_mulite" class="materialAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="sucai_mulite">/wx/wx_sucai_mulite.jsp</result>
+		</action>
+		
+		<action name="sucai_single" method="sucai_single" class="materialAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="sucai_single">/wx/wx_sucai_single.jsp</result>
+		</action>
+		
+		<action name="uploadMaterialSingle" method="uploadMaterialSingle" class="materialAction">
+			<interceptor-ref name="params" />
+			<result name="success" type="redirectAction">selectAllNewMaterialByUserId</result>
+		</action>
+		
+		<action name="uploadMaterialMulite" method="uploadMaterialMulite" class="materialAction">
+			<interceptor-ref name="params" />
+			<result name="success" type="redirectAction">selectAllNewMaterialByUserId</result>
+		</action>
+		
+		<!-- 查阅素材forkeyword -->
+		<action name="selectAllNewMaterialByUserId" method="selectAllNewMaterialByUserId" class="materialAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success">/wx/wx_sucai.jsp</result>
+		</action>
+
+		<!-- 查阅素材forkeyword -->
+		<action name="selectAllNewMaterialByUserIdForKeyword" method="selectAllNewMaterialByUserIdForKeyword" class="materialAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success">/wx/wx_choose_material_template.jsp</result>
+		</action>
+		
+		<action name="selectAllNewMaterialByUserIdForKeywordForEdit" method="selectAllNewMaterialByUserIdForKeywordForEdit" class="materialAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success">/wx/wx_choose_material_template_edit.jsp</result>
+		</action>
+		
+		
+		<action name="deleteMaterial" method="deleteMaterial" class="materialAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="editMaterial" method="editMaterial" class="materialAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="single">/wx/wx_sucai_single.jsp</result>
+			<result name="mulite">/wx/wx_sucai_mulite.jsp</result>
+		</action>
+		
+		
+		<!-- 菜单Action -->
+
+		<action name="saveAppidAndSecret" method="saveAppidAndSecret" class="menuAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>		
+		<action name="selectAllMenusByAppKey" method="selectAllMenusByAppKey" class="menuAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success">/wx/wx_menu.jsp</result>
+		</action>
+		<action name="updateMenuByAppKey" method="updateMenuByAppKey" class="menuAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="updateMenuAndPushlishByAppKey" method="updateMenuAndPushlishByAppKey" class="menuAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 菜单Action ENd -->
+		
+		<!-- 关键词Action -->
+		<action name="saveOrUpdateKeyword" method="saveOrUpdateKeyword" class="keywordsAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="deleteKeyword" method="deleteKeyword" class="keywordsAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="deleteKeywordByIdAndAppId" method="deleteKeywordByIdAndAppId" class="keywordsAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="keywords" method="execute" class="keywordsAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="gz">/wx/wx_guanzhu.jsp</result>
+			<result name="mr">/wx/wx_guanzhu.jsp</result>
+			<result name="zd">/wx/wx_guanjianci_zidong.jsp</result>
+		</action>
+		
+		
+		<!-- 保存添加关键词回复 -->
+		<action name="saveOrUpdateKeywordsAuto" method="saveOrUpdateKeywordsAuto" class="keywordsAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>		
+		<!-- 刮刮卡 WEB -->
+		<action name="guaguaka"  class="guaguakaAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="list">/wx_service/wx_guaguaka_list.jsp</result>
+			<result name="add">/wx_service/wx_guaguaka_add.jsp</result>
+			<result name="edit">/wx_service/wx_guaguaka_edit.jsp</result>
+			<result name="cog">/wx_service/wx_guaguaka_cog.jsp</result>
+			<result name="cogResult">/wx_service/wx_guaguaka_cog_result.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<!-- 抽奖相关END -->		
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 刮刮卡WX -->
+		<action name="guaguakawx"  class="guaguakaAction">
+			<interceptor-ref name="checkwxsession"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="guaguaka">/wx_service/wx_guaguaka.jsp</result>
+			<result name="expire">/wx_service/wx_guaguaka_expire.jsp</result>
+			<result name="win">/wx_service/wx_guaguaka_win.jsp</result>
+			<result name="share">/wx_service/wx_guaguaka_share.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+				
+		<!-- 大转盘 WEB -->
+		<action name="dazhuanpan"  class="dazhuanpanAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="list">/wx_service/wx_dazhuanpan_list.jsp</result>
+			<result name="add">/wx_service/wx_dazhuanpan_add.jsp</result>
+			<result name="edit">/wx_service/wx_dazhuanpan_edit.jsp</result>
+			<result name="cog">/wx_service/wx_dazhuanpan_cog.jsp</result>
+			<result name="cogResult">/wx_service/wx_dazhuanpan_cog_result.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>	
+		<!-- 大转盘WX -->
+		<action name="dazhuanpanwx"  class="dazhuanpanAction">
+			<interceptor-ref name="checkwxsession"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="dazhuanpan">/wx_service/wx_dazhuanpan.jsp</result>
+			<result name="expire">/wx_service/wx_dazhuanpan_expire.jsp</result>
+			<result name="win">/wx_service/wx_dazhuanpan_win.jsp</result>
+			<result name="share">/wx_service/wx_dazhuanpan_share.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+				
+		<!-- 360全景 WEB-->
+		<action name="quanjing"  class="quanjingAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params" />
+			<result name="list">/weixin/360/wx_quanjing_list.jsp</result>
+			<result name="add">/weixin/360/wx_quanjing_add.jsp</result>
+			<result name="edit">/weixin/360/wx_quanjing_edit.jsp</result>
+			<result name="cog">/weixin/360/wx_quanjing_cog.jsp</result>
+			<result name="cogResult">/weixin/360/wx_quanjing_cog_result.jsp</result>
+			<result name="yulan">/weixin/360/wx_quanjing_yulan_result.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<!-- 操作END -->			
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="prequanjing" method="yulan"  class="quanjingAction">
+			<interceptor-ref name="params" />
+			<result name="yulan">/weixin/360/wx_quanjing_yulan_result.jsp</result>
+		</action>
+		
+		<!-- 微相册  WEB-->
+		<action name="photo"  class="photoAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="add">/weixin/photo/wx_photo_add.jsp</result>
+			<result name="edit">/weixin/photo/wx_photo_edit.jsp</result>
+			
+			<result name="cog">/weixin/photo/wx_photo_cog.jsp</result>
+			<result name="cogResult">/weixin/photo/wx_photo_cog_result.jsp</result>
+			
+			<!-- <result name="list">/weixin/photo/wx_photo_yulan.jsp</result> -->
+			<!-- <result name="yulan">/weixin/photo/wx_photo_album_pic.jsp</result> -->
+			<result name="logOut">/session.jsp</result>
+			<!-- 操作END -->			
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="photobasic" class="photoAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="basiclist">/weixin/photo/wx_photobasic_list.jsp</result>
+			<result name="basicadd">/weixin/photo/wx_photobasic_add.jsp</result>
+			<result name="basicedit">/weixin/photo/wx_photobasic_edit.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 操作 WB END-->
+		<!-- 相册设置 WX -->
+		<action name="prephoto" method="yulan"  class="photoAction">
+			<interceptor-ref name="params" />
+			<result name="yulan">/weixin/photo/wx_photo_album_pic.jsp</result>
+		</action>
+		<action name="photolist" method="list"  class="photoAction">
+			<interceptor-ref name="params" />
+			<result name="list">/weixin/photo/wx_photo_yulan.jsp</result>
+		</action>
+		<!-- 操作 WX END -->
+		<!-- 微调研 -->
+		<action name="research" class="researchAction">
+			<interceptor-ref name="params" />
+			<result name="answerlist">/weixin/research/wx_research_list.jsp</result>
+			<result name="addq">/weixin/diaoyan/diaoyan.jsp</result>
+			<result name="editq">/weixin/diaoyan/diaoyanupdate.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="researchbasic" class="researchAction">
+			<interceptor-ref name="params" />
+			<result name="list">/weixin/research/wx_researchbasic_list.jsp</result>
+			<result name="add">/weixin/research/wx_researchbasic_add.jsp</result>
+			<result name="edit">/weixin/research/wx_researchbasic_edit.jsp</result>
+			<result name="resultlist">/weixin/diaoyan/diaoyan_tongji.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="researchperson" class="researchpersonAction">
+			<interceptor-ref name="params" />
+			<result name="start">/weixin/diaoyan/showdiaoyan_1.jsp</result>
+			<result name="getinfo">/weixin/diaoyan/showdiaoyan_2.jsp</result>
+			<result name="questionlist">/weixin/diaoyan/showdiaoyan_3.jsp</result>
+			<result name="descs">/weixin/diaoyan/showdiaoyan_4.jsp</result>
+			<result name="diaoyan_3">/weixin/diaoyan/showdiaoyan_3.jsp</result>
+			
+			<result name="diaoyan_4">/weixin/diaoyan/showdiaoyan_4.jsp</result>
+			<result name="diaoyan_5">/weixin/diaoyan/showdiaoyan_5.jsp</result>
+			<result name="diaoyan_6">/weixin/diaoyan/showdiaoyan_6.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		
+		<action name="editWebsite" method="editWebsite" class="editWebsiteAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="selectWebsite" method="selectWebsite" class="editWebsiteAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success">/weixin/gw/tmp1/index_editor.jsp</result>
+		</action>
+		
+		<action name="previewWebSite" method="previewWebSite" class="editWebsiteAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/weixin/gw/tmp1/index.jsp</result>
+			<result name="success0">/weixin/gw/tmp1/index.jsp</result>
+			<result name="success1">/weixin/gw/tmp2/tmp_index_1.jsp</result>
+			<result name="success2">/weixin/gw/tmp2/tmp_index_2.jsp</result>
+			<result name="success3">/weixin/gw/tmp2/tmp_index_3.jsp</result>
+			<result name="success4">/weixin/gw/tmp2/tmp_index_4.jsp</result>
+			<result name="success5">/weixin/gw/tmp2/tmp_index_5.jsp</result>
+			<result name="success6">/weixin/gw/tmp2/tmp_index_6.jsp</result>
+			<result name="success7">/weixin/gw/tmp2/tmp_index_7.jsp</result>
+			<result name="success8">/weixin/gw/tmp2/tmp_index_8.jsp</result>
+			<result name="success9">/weixin/gw/tmp2/tmp_index_9.jsp</result>
+			<result name="success10">/weixin/gw/tmp2/tmp_index_10.jsp</result>
+			<result name="success11">/weixin/gw/tmp2/tmp_index_11.jsp</result>
+			<result name="success12">/weixin/gw/tmp2/tmp_index_12.jsp</result>
+			<result name="success13">/weixin/gw/tmp2/tmp_index_13.jsp</result>
+			<result name="success14">/weixin/gw/tmp2/tmp_index_14.jsp</result>
+			<result name="success15">/weixin/gw/tmp2/tmp_index_15.jsp</result>
+			<result name="success16">/weixin/gw/tmp2/tmp_index_16.jsp</result>
+			<result name="success17">/weixin/gw/tmp2/tmp_index_17.jsp</result>
+			<result name="success18">/weixin/gw/tmp2/tmp_index_18.jsp</result>
+			<result name="success19">/weixin/gw/tmp2/tmp_index_19.jsp</result>
+			<result name="success20">/weixin/gw/tmp2/tmp_index_20.jsp</result>
+			<result name="success21">/weixin/gw/tmp2/tmp_index_21.jsp</result>
+			<result name="success22">/weixin/gw/tmp2/tmp_index_22.jsp</result>
+			<result name="success23">/weixin/gw/tmp2/tmp_index_23.jsp</result>
+			<result name="success24">/weixin/gw/tmp2/tmp_index_24.jsp</result>
+			<result name="success25">/weixin/gw/tmp2/tmp_index_25.jsp</result>
+			<result name="success26">/weixin/gw/tmp2/tmp_index_26.jsp</result>
+			<result name="success27">/weixin/gw/tmp2/tmp_index_27.jsp</result>
+			<result name="success28">/weixin/gw/tmp2/tmp_index_28.jsp</result>
+			<result name="success29">/weixin/gw/tmp2/tmp_index_29.jsp</result>
+			<result name="success30">/weixin/gw/tmp2/tmp_index_30.jsp</result>
+			<result name="success31">/weixin/gw/tmp2/tmp_index_31.jsp</result>
+			<result name="success32">/weixin/gw/tmp2/tmp_index_32.jsp</result>
+			<result name="success33">/weixin/gw/tmp2/tmp_index_33.jsp</result>
+			<result name="success34">/weixin/gw/tmp2/tmp_index_34.jsp</result>
+			<result name="success35">/weixin/gw/tmp2/tmp_index_35.jsp</result>
+			<result name="success36">/weixin/gw/tmp2/tmp_index_36.jsp</result>
+			<result name="success37">/weixin/gw/tmp2/tmp_index_37.jsp</result>
+			<result name="success38">/weixin/gw/tmp2/tmp_index_38.jsp</result>
+		</action>
+		
+		<action name="template_WebSite" method="template_WebSite" class="editWebsiteAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/weixin/gw/tmp2/template_website.jsp</result>
+		</action>
+		
+		<!--新模版预览-->
+		<action name="preview_NewWebSite" method="preview_NewWebSite" class="editWebsiteAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/weixin/gw/tmp1/index.jsp</result>
+			<result name="success0">/weixin/gw/tmp1/index.jsp</result>
+			<result name="success1">/weixin/gw/tmp2/tmp_index_1.jsp</result>
+			<result name="success2">/weixin/gw/tmp2/tmp_index_2.jsp</result>
+			<result name="success3">/weixin/gw/tmp2/tmp_index_3.jsp</result>
+			<result name="success4">/weixin/gw/tmp2/tmp_index_4.jsp</result>
+			<result name="success5">/weixin/gw/tmp2/tmp_index_5.jsp</result>
+			<result name="success6">/weixin/gw/tmp2/tmp_index_6.jsp</result>
+			<result name="success7">/weixin/gw/tmp2/tmp_index_7.jsp</result>
+			<result name="success8">/weixin/gw/tmp2/tmp_index_8.jsp</result>
+			<result name="success9">/weixin/gw/tmp2/tmp_index_9.jsp</result>
+			<result name="success10">/weixin/gw/tmp2/tmp_index_10.jsp</result>
+			<result name="success11">/weixin/gw/tmp2/tmp_index_11.jsp</result>
+			<result name="success12">/weixin/gw/tmp2/tmp_index_12.jsp</result>
+			<result name="success13">/weixin/gw/tmp2/tmp_index_13.jsp</result>
+			<result name="success14">/weixin/gw/tmp2/tmp_index_14.jsp</result>
+			<result name="success15">/weixin/gw/tmp2/tmp_index_15.jsp</result>
+			<result name="success16">/weixin/gw/tmp2/tmp_index_16.jsp</result>
+			<result name="success17">/weixin/gw/tmp2/tmp_index_17.jsp</result>
+			<result name="success18">/weixin/gw/tmp2/tmp_index_18.jsp</result>
+			<result name="success19">/weixin/gw/tmp2/tmp_index_19.jsp</result>
+			<result name="success20">/weixin/gw/tmp2/tmp_index_20.jsp</result>
+			<result name="success21">/weixin/gw/tmp2/tmp_index_21.jsp</result>
+			<result name="success22">/weixin/gw/tmp2/tmp_index_22.jsp</result>
+			<result name="success23">/weixin/gw/tmp2/tmp_index_23.jsp</result>
+			<result name="success24">/weixin/gw/tmp2/tmp_index_24.jsp</result>
+			<result name="success25">/weixin/gw/tmp2/tmp_index_25.jsp</result>
+			<result name="success26">/weixin/gw/tmp2/tmp_index_26.jsp</result>
+			<result name="success27">/weixin/gw/tmp2/tmp_index_27.jsp</result>
+			<result name="success28">/weixin/gw/tmp2/tmp_index_28.jsp</result>
+			<result name="success29">/weixin/gw/tmp2/tmp_index_29.jsp</result>
+			<result name="success30">/weixin/gw/tmp2/tmp_index_30.jsp</result>
+			<result name="success31">/weixin/gw/tmp2/tmp_index_31.jsp</result>
+			<result name="success32">/weixin/gw/tmp2/tmp_index_32.jsp</result>
+			<result name="success33">/weixin/gw/tmp2/tmp_index_33.jsp</result>
+			<result name="success34">/weixin/gw/tmp2/tmp_index_34.jsp</result>
+			<result name="success35">/weixin/gw/tmp2/tmp_index_35.jsp</result>
+			<result name="success36">/weixin/gw/tmp2/tmp_index_36.jsp</result>
+			<result name="success37">/weixin/gw/tmp2/tmp_index_37.jsp</result>
+			<result name="success38">/weixin/gw/tmp2/tmp_index_38.jsp</result>
+		</action>
+		
+		<action name="prewArticleById" method="prewArticleById" class="articlePrewAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/weixin/gw/tmp1/website_prew.jsp</result>
+			<result name="error">/weixin/gw/tmp1/website_prew_article.jsp</result>
+		</action>
+		
+		<action name="prewArticle" method="prewArticle" class="articlePrewAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/weixin/gw/tmp1/website_prew.jsp</result>
+		</action>
+		<!--素材详细 -->	
+		<action name="prewArticleInfo" method="prewArticleInfo" class="articlePrewAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/weixin/gw/tmp1/website_prew_article.jsp</result>
+		</action>
+				
+		<action name="feedback" method="feedback" class="feedbackAction">
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<!--订单 WEB -->	
+		<action name="order" class="orderAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="list">/weixin/order/order_list.jsp</result>
+			<result name="add">/weixin/order/order_add.jsp</result>
+			<result name="edit">/weixin/order/order_edit.jsp</result>
+			<result name="stream" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="rlist" type="redirectAction">order!list.action</result>
+			<result name="manager">/weixin/order/order_manager.jsp</result>
+		</action>
+
+		<action name="ordeRequeryCogResult" method="requeryCogResult" class="orderAction">
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="cogResult">/weixin/order/order_manager_result.jsp</result>
+		</action>
+		<!--END-->	
+		<!--订单 WX -->		
+		<action name="orderprew" method="preorder" class="orderAction">
+			<interceptor-ref name="checkwxsession"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/weixin/order/order_prew.jsp</result>
+		</action>
+		<action name="addNewWXOrder" method="addNewWXOrder" class="orderAction">
+			<interceptor-ref name="checkwxsession"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<!--  <result name="success">/weixin/order/order_result.jsp</result> -->
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="selectAllWxOrderByAppIdAndWID" method="selectAllWxOrderByAppIdAndWID" class="orderAction">
+			<interceptor-ref name="checkwxsession"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/weixin/order/order_result.jsp</result>
+		</action>
+		<!--END -->	
+		
+
+		
+		<!-- 留言板 WEB-->
+		<action name="showAllMessages" class="messageAction">
+			<interceptor-ref name="params" />
+			<result name="cog">/weixin/message/wx_message_cog.jsp</result>
+			<result name="cogResult">/weixin/message/wx_message_cog_result.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="messagebasic" class="messageAction">
+			<interceptor-ref name="params" />
+			<result name="list">/weixin/message/wx_messagebasic_list.jsp</result>
+			<result name="add">/weixin/message/wx_messagebasic_add.jsp</result>
+			<result name="edit">/weixin/message/wx_messagebasic_edit.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<action name="addMessage" method="addNewMessage" class="messageAction">
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>
+		
+		<action name="updateMessage" method="updateMessage" class="messageAction">
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>
+		
+		<action name="deleteMessage" method="deleteMessage" class="messageAction">
+			<interceptor-ref name="params" />
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>
+		<!-- END WEB-->
+		<!-- 留言板 WX-->
+		<action name="showMessages" method="selectAllMessages" class="messageAction">
+			<interceptor-ref name="params" />
+			<result name="success">/weixin/message/messages.jsp</result>
+			<result name="error">/errorPageMobile.jsp</result>
+		</action>
+		<!-- END WX-->
+		
+		<!--LBS -->
+		<action name="lbs"  class="lbsAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="list">/weixin/lbs/lbs_list.jsp</result>
+			<result name="add">/weixin/lbs/lbs_add.jsp</result>
+			<result name="edit">/weixin/lbs/lbs_edit.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>	
+		<!--LBS WX-->
+		<action name="lbsshowmap" method="lbsShowMap" class="lbsAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="map">/weixin/lbs/lbs_showmap.jsp</result>
+		</action>
+
+		<!--会员卡WEB-->
+		<action name="member"  class="memberAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="list">/weixin/member/member_list.jsp</result>
+			<result name="add">/weixin/member/member_add.jsp</result>
+			<result name="edit">/weixin/member/member_edit.jsp</result>
+			<result name="cog">/weixin/member/member_cog.jsp</result>
+			<result name="cogResult">/weixin/member/member_cog_result.jsp</result>
+			<result name="cogInfoList">/weixin/member/member_cog_infoList.jsp</result>
+			<result name="cogInfoListResult">/weixin/member/member_cog_infoList_result.jsp</result>
+			<result name="entityCard">/weixin/member/member_entityCard.jsp</result>
+			<result name="entityCardResult">/weixin/member/member_entityCard_result.jsp</result>
+			
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>	
+		<!--会员卡WX-->
+		<action name="memberwx"  class="memberWXAction">
+			<interceptor-ref name="checkwxsession"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="new">/weixin/member/member_new.jsp</result>
+			<result name="old">/weixin/member/member_old.jsp</result>
+			<result name="member_info">/weixin/member/member_info.jsp</result>
+			<result name="perfect_info">/weixin/member/member_perfect_info.jsp</result>
+			
+			<result name="address">/weixin/member/member_address.jsp</result>
+			<result name="history">/weixin/member/member_history.jsp</result>
+			<result name="historyResult">/weixin/member/member_history_result.jsp</result>
+			<result name="check_entityCard">/weixin/member/member_check_entityCard.jsp</result>
+			<result name="error">/errorPageMobile.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>
+		
+		<!--重定向 获取用户微信ID-->
+		
+		<action name="redirect"  class="redirectAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="redirect">/redirect.jsp</result>
+			<result name="error">/errorPageMobile.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>
+		
+		<!-- 微文件 -->
+		<action name="file"  class="fileAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="show">/file/file_cog.jsp</result>
+			<!-- 操作END -->			
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<!-- 事件导航 -->
+		<action name="linkAction" method="linkActionEvents" class="linkAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="success">/weixin/action/wx_action.jsp</result>
+		</action>
+		
+		<!--考勤 -->
+		<action name="clock"  class="clockAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="list">/weixin/clock/clock_list.jsp</result>
+			<result name="add">/weixin/clock/clock_add.jsp</result>
+			<result name="edit">/weixin/clock/clock_edit.jsp</result>
+			<result name="cog_user">/weixin/clock/clock_cog_user.jsp</result>
+			<result name="cog_user_result">/weixin/clock/clock_cog_user_result.jsp</result>
+			<result name="for_info">/weixin/clock/clock_for_info.jsp</result>
+			<result name="for_info_result">/weixin/clock/clock_for_info_result.jsp</result>
+			<result name="logOut">/session.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>	
+		<!--考勤 WX-->
+		<action name="clockwx"  class="clockWXAction">
+			<interceptor-ref name="checkwxsession"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="new">/weixin/clock/clock_perfect_info.jsp</result>
+			<result name="old">/weixin/clock/clock_old.jsp</result>
+			<result name="info">/weixin/clock/clock_info.jsp</result>
+			<result name="infoResult">/weixin/clock/clock_info_result.jsp</result>
+			<result name="lbs">/weixin/clock/clock_showmap.jsp</result>
+			
+			<result name="error">/errorPageMobile.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>	
+		</action>
+		
+		<!--留影墙 -->
+		<action name="liuying" class="liuyingAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="list">/weixin/liuying/liuying_list.jsp</result>
+			<result name="add">/weixin/liuying/liuying_add.jsp</result>
+			<result name="edit">/weixin/liuying/liuying_edit.jsp</result>
+			
+			<result name="cog">/weixin/liuying/liuying_info_cog.jsp</result>
+			<result name="cogResult">/weixin/liuying/liuying_info_cog_result.jsp</result>
+			
+			<result name="liuying">/weixin/liuying/wx_liuying.jsp</result>
+			
+			
+			
+			<result name="logOut">/session.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>		
+		</action>
+		
+		<!--留影墙 WX-->
+		<action name="liuyingwx"  class="liuyingActionWX">
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="checkwxsession"></interceptor-ref>
+			<result name="liuying">/weixin/liuying/wx_liuying.jsp</result>
+			<result name="liuying_result">/weixin/liuying/wx_liuying_result.jsp</result>
+			<result name="add">/weixin/liuying/wx_liuying_add.jsp</result>
+			
+			<result name="error">/errorPageMobile.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>	
+		</action>
+		
+		
+		
+		<!-- 客服系统 -->
+		<action name="kefu"  class="kefuAction">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="checklogin"></interceptor-ref>
+			<result name="list">/weixin/kefu/kefu_list.jsp</result>
+			<result name="result">/weixin/kefu/kefu_result.jsp</result>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>			
+		</action>
+		
+		<!--关键词信息-->
+		<action name="crawler" class="crawlerAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>		
+		</action>
+		
+		
+		
+		<!--实体会员卡接口 -->
+		<action name="apiMember" class="apiMemberAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>		
+		</action>
+
+	</package>
+</struts>    

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="APPBean" type="com.zhike.sql.beans.APPBean" />
+		<typeAlias alias="CheckLoginBean" type="com.zhike.sql.beans.CheckLoginBean" />
+		<typeAlias alias="MaterialBean" type="com.zhike.sql.beans.MaterialBean" />
+		<typeAlias alias="MenuBean" type="com.zhike.sql.beans.MenuBean" />
+		<typeAlias alias="KeywordsBean" type="com.zhike.sql.beans.KeywordsBean" />
+		<typeAlias alias="WebsiteBean" type="com.zhike.sql.beans.WebsiteBean"/>
+		<typeAlias alias="WebsiteTempBean" type="com.zhike.sql.beans.WebsiteTempBean"/>
+		<typeAlias alias="GuaguakaBean" type="com.zhike.sql.beans.GuaguakaBean" />
+		<typeAlias alias="GuaguakaInfoBean" type="com.zhike.sql.beans.GuaguakaInfoBean" />
+		<typeAlias alias="PageBean" type="com.zhike.sql.beans.PageBean" />
+		<typeAlias alias="UserActionBean" type="com.zhike.sql.beans.UserActionBean" />
+		<typeAlias alias="OrderBean" type="com.zhike.sql.beans.OrderBean" />
+		<typeAlias alias="MessageBean" type="com.zhike.sql.beans.MessageBean"/>
+		<typeAlias alias="MessagebasicBean" type="com.zhike.sql.beans.MessagebasicBean"/>
+		<typeAlias alias="QuanJingBean" type="com.zhike.sql.beans.QuanJingBean"/>
+		<typeAlias alias="PhotoBean" type="com.zhike.sql.beans.PhotoBean"/>
+		<typeAlias alias="PhotobasicBean" type="com.zhike.sql.beans.PhotobasicBean"/>
+		<typeAlias alias="OrderDetailBean" type="com.zhike.sql.beans.OrderDetailBean"/>
+		<typeAlias alias="ActionLinkBean" type="com.zhike.sql.beans.ActionLinkBean"/>
+		
+		<typeAlias alias="LBSBean" type="com.zhike.sql.beans.LBSBean" />
+		<typeAlias alias="MemberBean" type="com.zhike.sql.beans.MemberBean" />
+		<typeAlias alias="MemberInfoBean" type="com.zhike.sql.beans.MemberInfoBean" />
+		<typeAlias alias="MemberInfoCogBean" type="com.zhike.sql.beans.MemberInfoCogBean" />
+		<typeAlias alias="MemberEntityCardBean" type="com.zhike.sql.beans.MemberEntityCardBean" />
+		<typeAlias alias="WxUserBean" type="com.zhike.sql.beans.WxUserBean" />
+		<typeAlias alias="ClockBean" type="com.zhike.sql.beans.ClockBean" />
+		<typeAlias alias="ClockDepartmentBean" type="com.zhike.sql.beans.ClockDepartmentBean" />
+		<typeAlias alias="ClockUserBean" type="com.zhike.sql.beans.ClockUserBean" />
+		<typeAlias alias="ClockInfoBean" type="com.zhike.sql.beans.ClockInfoBean" />
+		<typeAlias alias="LiuyingBean" type="com.zhike.sql.beans.LiuyingBean" />
+		<typeAlias alias="LiuyingInfoBean" type="com.zhike.sql.beans.LiuyingInfoBean" />
+		
+		
+		
+		<typeAlias alias="ResearchBean" type="com.zhike.sql.beans.ResearchBean"/>
+		<typeAlias alias="ResearchbasicBean" type="com.zhike.sql.beans.ResearchbasicBean"/>
+		<typeAlias alias="ResearchPersonBean" type="com.zhike.sql.beans.ResearchPersonBean"/>
+		<typeAlias alias="ResearchAnswerBean" type="com.zhike.sql.beans.ResearchAnswerBean"/>
+		
+		<typeAlias alias="CrawlerResultBean" type="com.data.crawler.db.model.CrawlerResultBean" />
+		<typeAlias alias="CrawlerCategoryBean" type="com.data.crawler.db.model.CrawlerCategoryBean" />
+		<typeAlias alias="CrawlerTaskForUserBean" type="com.data.crawler.db.model.CrawlerTaskForUserBean" />
+		<typeAlias alias="CrawlerTaskForKeywordBean" type="com.data.crawler.db.model.CrawlerTaskForKeywordBean" />
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/zhike/sql/mapper/CheckLogin.xml" />
+		<mapper resource="com/zhike/sql/mapper/APPKEY.xml" />
+		<mapper resource="com/zhike/sql/mapper/Material.xml" />
+		<mapper resource="com/zhike/sql/mapper/Menu.xml" />
+		<mapper resource="com/zhike/sql/mapper/Keywords.xml" />
+		<mapper resource="com/zhike/sql/mapper/Website.xml" />
+		<mapper resource="com/zhike/sql/mapper/Guaguaka.xml" />
+		<mapper resource="com/zhike/sql/mapper/UserAction.xml" />
+		<mapper resource="com/zhike/sql/mapper/Order.xml" />
+		<mapper resource="com/zhike/sql/mapper/Message.xml" />
+		<mapper resource="com/zhike/sql/mapper/QuanJing.xml" />
+		<mapper resource="com/zhike/sql/mapper/Photo.xml" />
+		<mapper resource="com/zhike/sql/mapper/ActionLink.xml"/>
+		<mapper resource="com/zhike/sql/mapper/LBS.xml" />
+		<mapper resource="com/zhike/sql/mapper/Member.xml" />
+		<mapper resource="com/zhike/sql/mapper/WxUser.xml" />
+		<mapper resource="com/zhike/sql/mapper/Research.xml" />
+		<mapper resource="com/zhike/sql/mapper/Clock.xml" />
+		<mapper resource="com/zhike/sql/mapper/Liuying.xml" />
+
+		<mapper resource="com/data/crawler/db/model/CrawlerResult.xml" />		
+		<mapper resource="com/data/crawler/db/model/CrawlerCategory.xml" />
+		<mapper resource="com/data/crawler/db/model/CrawlerTaskForUser.xml" />
+		<mapper resource="com/data/crawler/db/model/CrawlerTaskForKeyword.xml" />
+	</mappers>
+
+</configuration>

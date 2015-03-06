@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/java/!svn/ver/203/YiWX/src/com/wechat/api
+END
+WechatReply.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/src/com/wechat/api/WechatReply.java
+END
+WechatReplyMedia.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/java/!svn/ver/107/YiWX/src/com/wechat/api/WechatReplyMedia.java
+END
+TextBeanItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/java/!svn/ver/107/YiWX/src/com/wechat/api/TextBeanItem.java
+END
+api.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/java/!svn/ver/107/YiWX/src/com/wechat/api/api.java
+END
+DoWechatReply.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/java/!svn/ver/203/YiWX/src/com/wechat/api/DoWechatReply.java
+END
+TextBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/java/!svn/ver/107/YiWX/src/com/wechat/api/TextBean.java
+END
+WechatReplyText.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/java/!svn/ver/107/YiWX/src/com/wechat/api/WechatReplyText.java
+END

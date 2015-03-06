@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.GuaguakaDAO">
+	<!-- 刮刮卡 -->
+	<select id="selectAllByAppID" resultType="GuaguakaBean">
+		SELECT * FROM WX_GUAGUAKA WHERE APP_ID = #{app_id} ORDER BY id DESC
+	</select>
+
+	<select id="selectServiceByID" resultType="GuaguakaBean">
+		SELECT * FROM WX_GUAGUAKA WHERE ID = #{id}
+	</select>	
+
+	<select id="selectIsWin" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_GUAGUAKA_INFO WHERE OPENID = #{openid} AND SERVICE_ID = #{id} AND TYPE > 0
+	</select>	
+	
+	<update id="updateInfoForUsed" parameterType="GuaguakaInfoBean">
+		UPDATE LOW_PRIORITY WX_GUAGUAKA_INFO
+		SET TYPE = 2,UPDATETIME = now()
+		WHERE id = #{id}
+	</update>
+	
+	<update id="updateInfoForContact" parameterType="GuaguakaInfoBean">
+		UPDATE LOW_PRIORITY WX_GUAGUAKA_INFO
+		SET CONTACT = #{contact}
+		WHERE id = #{id}
+	</update>
+
+	<select id="selectOneInfo" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_GUAGUAKA_INFO WHERE OPENID = #{openid} AND SERVICE_ID = #{id}
+	</select>		
+
+	 <insert id="insertOneInfo" parameterType="GuaguakaBean">
+	 	INSERT INTO WX_GUAGUAKA_INFO(service_id,openid,createtime,type,todaytime,totaltime)
+	 	VALUES(#{id},#{openid},now(),0,0,0)
+	 </insert>	
+
+	<select id="selectAllOfWin" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_GUAGUAKA_INFO WHERE  SERVICE_ID = #{id}  AND TYPE != 0
+	</select>
+	
+	<select id="selectAllInfosByServiceId" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_GUAGUAKA_INFO WHERE  SERVICE_ID = #{id} 
+	</select>		
+	
+	
+	<update id="updateInfoForWin" parameterType="GuaguakaInfoBean">
+		UPDATE LOW_PRIORITY WX_GUAGUAKA_INFO
+		SET SN = #{sn},TYPE = #{type},PRIZETYPE =  #{prizetype}
+		WHERE id = #{id}
+	</update>	
+	
+	<update id="updateInfoForTime" parameterType="GuaguakaInfoBean">
+		UPDATE LOW_PRIORITY WX_GUAGUAKA_INFO
+		SET TYPE = #{type},CREATETIME =  now(),TODAYTIME = #{todaytime},TOTALTIME = #{totaltime}
+		WHERE id = #{id}
+	</update>	
+
+	<select id="selectOneInfoById" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_GUAGUAKA_INFO WHERE ID = #{id} 
+	</select>		
+
+	<insert id="insertOneService" parameterType="GuaguakaBean" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO WX_GUAGUAKA
+		(app_id,keywords,title,img,desc_service,starttime,endtime,one_prize,two_prize,three_prize,four_prize,five_prize,
+		one_number,two_number,three_number,four_number,five_number,isdisplay,probability,totaltime,everydaytime,
+		password,explain_service,contacttype,createtime)
+		VALUES
+		(#{app_id},#{keywords},#{title},#{img},#{desc_service},#{starttime},#{endtime},#{one_prize},#{two_prize},#{three_prize},#{four_prize},#{five_prize},
+		#{one_number},#{two_number},#{three_number},#{four_number},#{five_number},#{isdisplay},#{probability},#{totaltime},#{everydaytime},
+		#{password},#{explain_service},#{contacttype},now())
+	</insert>
+	
+	<update id="updateOneService" parameterType="GuaguakaBean">
+		UPDATE LOW_PRIORITY WX_GUAGUAKA
+		SET keywords = #{keywords},title = #{title},img =  #{img},desc_service =  #{desc_service},isdisplay =  #{isdisplay},
+			probability =  #{probability},totaltime =  #{totaltime},everydaytime =  #{everydaytime},password =  #{password}
+			,explain_service =  #{explain_service},contacttype =  #{contacttype},updatetime =  now()
+		WHERE id = #{id} and app_id = #{app_id}
+	</update>		
+
+
+	 <delete id="delOneService" parameterType="GuaguakaBean">
+	 	DELETE FROM WX_GUAGUAKA WHERE id = #{id} and app_id = #{app_id}
+	 </delete>
+
+	 <delete id="delInfosByServiceId" parameterType="GuaguakaBean">
+	 	DELETE FROM WX_GUAGUAKA_INFO WHERE SERVICE_ID = #{id}
+	 </delete>
+	 
+	 <select id="selectInfosByPage" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_GUAGUAKA_INFO WHERE  SERVICE_ID = #{service_id} 
+		<if test="sn != ''">
+		<![CDATA[and sn = #{sn} ]]>
+		</if>		
+		 AND TYPE > 0 ORDER BY id DESC LIMIT #{from},#{count} 
+	 </select>	
+	 
+	 <select id="selectCountInfosByPage" resultType="int">
+		SELECT count(*) FROM WX_GUAGUAKA_INFO WHERE  SERVICE_ID = #{service_id} 
+		<if test="sn != ''">
+		<![CDATA[and sn = #{sn} ]]>
+		</if>		
+		 AND TYPE > 0 
+	 </select>		 
+	<!-- 大转盘 -->
+	
+	<select id="selectAllByAppIDForDazhuanpan" resultType="GuaguakaBean">
+		SELECT * FROM WX_DAZHUANPAN  WHERE APP_ID = #{app_id} ORDER BY id DESC
+	</select>
+
+	<select id="selectServiceByIDForDazhuanpan" resultType="GuaguakaBean">
+		SELECT * FROM WX_DAZHUANPAN WHERE ID = #{id}
+	</select>	
+
+	<select id="selectIsWinForDazhuanpan" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_DAZHUANPAN_INFO WHERE OPENID = #{openid} AND SERVICE_ID = #{id} AND TYPE > 0
+	</select>	
+	
+	<update id="updateInfoForUsedForDazhuanpan" parameterType="GuaguakaInfoBean">
+		UPDATE LOW_PRIORITY WX_DAZHUANPAN_INFO
+		SET TYPE = 2,UPDATETIME = now()
+		WHERE id = #{id}
+	</update>
+	
+	<update id="updateInfoForContactForDazhuanpan" parameterType="GuaguakaInfoBean">
+		UPDATE LOW_PRIORITY WX_DAZHUANPAN_INFO
+		SET CONTACT = #{contact}
+		WHERE id = #{id}
+	</update>
+
+	<select id="selectOneInfoForDazhuanpan" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_DAZHUANPAN_INFO WHERE OPENID = #{openid} AND SERVICE_ID = #{id}
+	</select>		
+
+	 <insert id="insertOneInfoForDazhuanpan" parameterType="GuaguakaBean">
+	 	INSERT INTO WX_DAZHUANPAN_INFO(service_id,openid,createtime,type,todaytime,totaltime)
+	 	VALUES(#{id},#{openid},now(),0,0,0)
+	 </insert>	
+
+	<select id="selectAllOfWinForDazhuanpan" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_DAZHUANPAN_INFO WHERE  SERVICE_ID = #{id}  AND TYPE != 0
+	</select>
+	
+	<select id="selectAllInfosByServiceIdForDazhuanpan" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_DAZHUANPAN_INFO WHERE  SERVICE_ID = #{id} 
+	</select>		
+	
+	
+	<update id="updateInfoForWinForDazhuanpan" parameterType="GuaguakaInfoBean">
+		UPDATE LOW_PRIORITY WX_DAZHUANPAN_INFO
+		SET SN = #{sn},TYPE = #{type},PRIZETYPE =  #{prizetype}
+		WHERE id = #{id}
+	</update>	
+	
+	<update id="updateInfoForTimeForDazhuanpan" parameterType="GuaguakaInfoBean">
+		UPDATE LOW_PRIORITY WX_DAZHUANPAN_INFO
+		SET TYPE = #{type},CREATETIME =  now(),TODAYTIME = #{todaytime},TOTALTIME = #{totaltime}
+		WHERE id = #{id}
+	</update>	
+
+	<select id="selectOneInfoByIdForDazhuanpan" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_DAZHUANPAN_INFO WHERE ID = #{id} 
+	</select>		
+
+	<insert id="insertOneServiceForDazhuanpan" parameterType="GuaguakaBean" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO WX_DAZHUANPAN
+		(app_id,keywords,title,img,desc_service,starttime,endtime,one_prize,two_prize,three_prize,four_prize,five_prize,
+		one_number,two_number,three_number,four_number,five_number,isdisplay,probability,totaltime,everydaytime,
+		password,explain_service,contacttype,createtime)
+		VALUES
+		(#{app_id},#{keywords},#{title},#{img},#{desc_service},#{starttime},#{endtime},#{one_prize},#{two_prize},#{three_prize},#{four_prize},#{five_prize},
+		#{one_number},#{two_number},#{three_number},#{four_number},#{five_number},#{isdisplay},#{probability},#{totaltime},#{everydaytime},
+		#{password},#{explain_service},#{contacttype},now())
+	</insert>
+	
+	<update id="updateOneServiceForDazhuanpan" parameterType="GuaguakaBean">
+		UPDATE LOW_PRIORITY WX_DAZHUANPAN
+		SET keywords = #{keywords},title = #{title},img =  #{img},desc_service =  #{desc_service},isdisplay =  #{isdisplay},
+			probability =  #{probability},totaltime =  #{totaltime},everydaytime =  #{everydaytime},password =  #{password}
+			,explain_service =  #{explain_service},contacttype =  #{contacttype},updatetime =  now()
+		WHERE id = #{id} and app_id = #{app_id}
+	</update>		
+
+
+	 <delete id="delOneServiceForDazhuanpan" parameterType="GuaguakaBean">
+	 	DELETE FROM WX_DAZHUANPAN WHERE id = #{id} and app_id = #{app_id}
+	 </delete>
+
+	 <delete id="delInfosByServiceIdForDazhuanpan" parameterType="GuaguakaBean">
+	 	DELETE FROM WX_DAZHUANPAN_INFO WHERE SERVICE_ID = #{id}
+	 </delete>
+	 
+	 <select id="selectInfosByPageForDazhuanpan" resultType="GuaguakaInfoBean">
+		SELECT * FROM WX_DAZHUANPAN_INFO WHERE  SERVICE_ID = #{service_id} 
+		<if test="sn != ''">
+		<![CDATA[and sn = #{sn} ]]>
+		</if>		
+		 AND TYPE > 0 ORDER BY id DESC LIMIT #{from},#{count} 
+	 </select>	
+	 
+	 <select id="selectCountInfosByPageForDazhuanpan" resultType="int">
+		SELECT count(*) FROM WX_DAZHUANPAN_INFO WHERE  SERVICE_ID = #{service_id} 
+		<if test="sn != ''">
+		<![CDATA[and sn = #{sn} ]]>
+		</if>		
+		 AND TYPE > 0 
+	 </select>	
+</mapper>

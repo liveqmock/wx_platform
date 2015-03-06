@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.ClockDAO">
+
+	<select id="selectAllByAppID" resultType="ClockBean">
+		SELECT * FROM WX_CLOCK WHERE APP_ID = #{app_id} ORDER BY id DESC
+	</select>
+	
+	<select id="selectOneClockByID" resultType="ClockBean">
+		SELECT * FROM WX_CLOCK WHERE id = #{id} 
+	</select>
+	
+
+	<insert id="insertOneClock" parameterType="ClockBean" useGeneratedKeys="true" keyProperty="id">
+	 	INSERT INTO WX_CLOCK
+	 	(app_id,keywords,title,img,desc_service,createtime,updatetime,
+	 	starttime,endtime,worktime,isflextime,clock_range,send_mail,send_mail_password,receive_mail,lbs_id)
+	 	VALUES
+	 	(#{app_id},#{keywords},#{title},#{img},#{desc_service},now(),now(),
+	 	#{starttime},#{endtime},#{worktime},#{isflextime},#{clock_range},#{send_mail},#{send_mail_password},#{receive_mail},#{lbs_id})
+	 </insert>	
+	 
+	<update id="updataeOneClock" parameterType="ClockBean">
+		UPDATE LOW_PRIORITY WX_CLOCK
+		SET keywords = #{keywords}, title = #{title}, img = #{img}, desc_service = #{desc_service},updatetime = now(), 
+			starttime = #{starttime},endtime = #{endtime},worktime = #{worktime},isflextime = #{isflextime},clock_range = #{clock_range},
+			send_mail = #{send_mail},send_mail_password = #{send_mail_password},receive_mail = #{receive_mail},lbs_id = #{lbs_id}
+		WHERE id = #{id} 
+	</update>	
+		 
+	<delete id="delOneClock" parameterType="ClockBean">
+	 	DELETE FROM WX_CLOCK WHERE id = #{id} and app_id = #{app_id}
+	 </delete>		 
+		 
+
+	
+		 
+	<!-- ClockDepartment -->
+	<insert id="insertOneClockDepartment" parameterType="ClockDepartmentBean" >
+	 	INSERT INTO WX_CLOCK_DEPARTMENT 
+	 	(service_id,name,createtime,updatetime)
+	 	VALUES
+	 	(#{service_id},#{name},now(),now())
+	 </insert>	
+	 
+	 <delete id="delClockDepartmentByServiceId" parameterType="ClockBean">
+	 	DELETE FROM WX_CLOCK_DEPARTMENT WHERE service_id = #{id}
+	 </delete>	
+	 
+	 <delete id="delOneClockDepartmentById" parameterType="ClockDepartmentBean">
+	 	DELETE FROM WX_CLOCK_DEPARTMENT WHERE id = #{id} and service_id = #{service_id}
+	 </delete>	
+	
+	<select id="selectClockDepartmentByServiceId" resultType="ClockDepartmentBean">
+		SELECT * FROM WX_CLOCK_DEPARTMENT WHERE service_id = #{id} 
+	</select> 	 
+
+	<update id="updateOneClockDepartmentById" parameterType="ClockDepartmentBean">
+		UPDATE LOW_PRIORITY WX_CLOCK_DEPARTMENT
+		SET name = #{name}, updatetime = now()
+		WHERE id = #{id} 
+	</update>	
+	
+	<update id="updateOneClockDepartmentByIdForLeader" parameterType="ClockDepartmentBean">
+		UPDATE LOW_PRIORITY WX_CLOCK_DEPARTMENT
+		SET leader = #{leader}, updatetime = now()
+		WHERE id = #{id} 
+	</update>
+
+	<update id="updateClockDepartmentByLeader" parameterType="ClockUserBean">
+		UPDATE LOW_PRIORITY WX_CLOCK_DEPARTMENT
+		SET leader = 0, updatetime = now()
+		WHERE leader = #{id} 
+	</update>	
+
+	<!-- ClockUser --> 
+	<select id="selectOneClockUser" resultType="ClockUserBean">
+		SELECT * FROM WX_CLOCK_USER WHERE SERVICE_ID = #{service_id} and OPENID =  #{openid}
+	</select>
+
+	<select id="selectOneClockUserById" resultType="ClockUserBean">
+		SELECT * FROM WX_CLOCK_USER WHERE id = #{id} 
+	</select>		
+		
+	<insert id="insertOneClockUser" parameterType="ClockUserBean" >
+	 	INSERT INTO WX_CLOCK_USER 
+	 	(service_id,openid,createtime,updatetime,
+	 	name,sex,birthday,tel,email,clockde_id)
+	 	VALUES
+	 	(#{service_id},#{openid},now(),now(),
+	 	#{name},#{sex},#{birthday},#{tel},#{email},#{clockde_id})
+	 </insert>	
+	 
+	 <delete id="delClockUserByServiceId" parameterType="ClockBean">
+	 	DELETE FROM WX_CLOCK_USER WHERE service_id = #{id}
+	 </delete>	
+	 
+	 <select id="selectCountUserByPage" resultType="int">
+		SELECT count(*) FROM WX_CLOCK_USER WHERE  SERVICE_ID = #{service_id} 
+		<if test="clockde_id != 0">
+		<![CDATA[and clockde_id =  #{clockde_id}  ]]>
+		</if>			
+		<if test="name != ''">
+		<![CDATA[and name like  '%${name}%'  ]]>
+		</if>			
+	 </select>	
+
+	 <select id="selectUserByPage" resultType="ClockUserBean">
+		SELECT * FROM WX_CLOCK_USER WHERE  SERVICE_ID = #{service_id} 
+		<if test="clockde_id != 0">
+		<![CDATA[and clockde_id =  #{clockde_id}  ]]>
+		</if>
+		<if test="name != ''">
+		<![CDATA[and name like  '%${name}%'  ]]>
+		</if>			
+		ORDER BY id DESC
+		LIMIT #{from},#{count} 
+	 </select>	
+
+	 <delete id="delOneClockUserById" parameterType="ClockUserBean">
+	 	DELETE FROM WX_CLOCK_USER WHERE id = #{id}
+	 </delete>	 
+	 
+	 
+	 <!-- ClockInfo -->
+	<select id="selectClockInfoByUserIdForToday" resultType="ClockInfoBean">
+		SELECT * FROM WX_CLOCK_INFO WHERE user_id = #{user_id} and  date(createtime)   =   curdate(); 
+	</select> 
+
+		
+	<insert id="insertOneClockInfoForOnWork" parameterType="ClockInfoBean" >
+	 	INSERT INTO WX_CLOCK_INFO 
+	 	(service_id,user_id,onwork_time,createtime,updatetime)
+	 	VALUES
+	 	(#{service_id},#{user_id},now(),now(),now())
+	 </insert>		
+
+	<update id="updateOneClockInfoForOffWork" parameterType="ClockInfoBean">
+		UPDATE LOW_PRIORITY WX_CLOCK_INFO
+		SET offwork_time = now(), updatetime = now()
+		WHERE id = #{id} 
+	</update>			 
+	 		
+	 <delete id="delClockInfoByServiceId" parameterType="ClockBean">
+	 	DELETE FROM WX_CLOCK_INFO WHERE service_id = #{id}
+	 </delete>	
+	 
+	 <delete id="delClockInfoByUserId" parameterType="ClockUserBean">
+	 	DELETE FROM WX_CLOCK_INFO WHERE user_id = #{id}
+	 </delete>	 
+	 
+	 <select id="selectCountInfoByPage" resultType="int">
+		SELECT count(*) FROM WX_CLOCK_INFO WHERE  user_id = #{id} and year(createtime)   =  #{query_year}   and month(createtime)   =  #{query_month} 
+	 </select>	
+
+	 <select id="selectInfoByPage" resultType="ClockInfoBean">
+		SELECT * FROM WX_CLOCK_INFO WHERE  user_id = #{id} and year(createtime)   =  #{query_year}   and month(createtime)   =  #{query_month} 
+		ORDER BY createtime DESC
+		LIMIT #{from},#{count} 
+	 </select>	
+	 
+</mapper>

@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/utils
+END
+ApplicationContextFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/ApplicationContextFactory.java
+END
+AnythingToActionLink.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/utils/AnythingToActionLink.java
+END
+TokenUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/TokenUtils.java
+END
+WeixinUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/WeixinUtil.java
+END
+GetUrl.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/GetUrl.java
+END
+TimestampToDate.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/TimestampToDate.java
+END
+ErrorCodesUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/ErrorCodesUtil.java
+END
+MyX509TrustManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/MyX509TrustManager.java
+END
+BgAnimationModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/BgAnimationModel.java
+END
+WechatXMLParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/utils/WechatXMLParser.java
+END
+RequestScopeFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/RequestScopeFactory.java
+END
+ReadFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/ReadFile.java
+END
+APPManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/APPManager.java
+END
+UUIDGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/UUIDGenerator.java
+END
+BgAnimationManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/BgAnimationManager.java
+END
+WXErrorCodes.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/WXErrorCodes.java
+END
+StringUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/StringUtils.java
+END
+HttpRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/HttpRequest.java
+END
+ExpresssoinValidateUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/utils/ExpresssoinValidateUtil.java
+END
+ZuoBiaoZhuanHuan.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/utils/ZuoBiaoZhuanHuan.java
+END

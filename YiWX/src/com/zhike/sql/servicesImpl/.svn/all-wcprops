@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/sql/servicesImpl
+END
+ResearchServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java/!svn/ver/164/YiWX/src/com/zhike/sql/servicesImpl/ResearchServiceImpl.java
+END
+WxUserServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/sql/servicesImpl/WxUserServiceImpl.java
+END
+MaterialServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/MaterialServiceImpl.java
+END
+WebSiteServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/java/!svn/ver/133/YiWX/src/com/zhike/sql/servicesImpl/WebSiteServiceImpl.java
+END
+MenuServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/MenuServiceImpl.java
+END
+CheckLoginServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/CheckLoginServiceImpl.java
+END
+MemberServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/sql/servicesImpl/MemberServiceImpl.java
+END
+KeywordsServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/KeywordsServiceImpl.java
+END
+OrderServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/OrderServiceImpl.java
+END
+APPManagerServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/APPManagerServiceImpl.java
+END
+QuanJingServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/QuanJingServiceImpl.java
+END
+UserActionServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/java/!svn/ver/193/YiWX/src/com/zhike/sql/servicesImpl/UserActionServiceImpl.java
+END
+LBSServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/LBSServiceImpl.java
+END
+APPServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/APPServiceImpl.java
+END
+MessageServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/MessageServiceImpl.java
+END
+GuaguakaServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/GuaguakaServiceImpl.java
+END
+PhotoServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/PhotoServiceImpl.java
+END
+ClockServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/sql/servicesImpl/ClockServiceImpl.java
+END
+ActionLinkServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/servicesImpl/ActionLinkServiceImpl.java
+END

@@ -1,0 +1,291 @@
+#nv_member {
+	BACKGROUND: url(../images/bg_home.png) #ebedf0
+}
+.homebg {
+	BACKGROUND: url(../images/bg_home1.png) repeat-x 0px 0px
+}
+.homebg2 {
+	BACKGROUND: url(../images/bg_home2.jpg) no-repeat center 0px
+}
+#nv_member #hd .wp {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+#nv_member .wp {
+	WIDTH: 100%
+}
+#nv_member #ft {
+	BORDER-RIGHT-WIDTH: 0px; MARGIN: 0px auto; WIDTH: 1210px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px
+}
+.propaganda {
+	POSITION: relative; MARGIN: 0px auto; WIDTH: 960px; DISPLAY: block; HEIGHT: 175px
+}
+.btn_download {
+	TEXT-INDENT: -9999px; WIDTH: 234px; DISPLAY: block; BACKGROUND: url(../images/download.png) no-repeat 0px 0px; HEIGHT: 54px; MARGIN-LEFT: -5px
+}
+.btn_download:hover {
+	BACKGROUND: url(../images/download_01.png) no-repeat
+}
+.btn_download:active {
+	BACKGROUND: url(../images/download_02.png) no-repeat
+}
+#mediaplayer_wrapper {
+	POSITION: relative; WIDTH: 960px
+}
+#mediaplayer {
+	POSITION: absolute; WIDTH: 188px; HEIGHT: 275px; COLOR: #ffffff; RIGHT: 188px; TOP: -303px
+}
+.ewm {
+	POSITION: absolute; TOP: 20px; LEFT: 30px
+}
+.font_ewm {
+	POSITION: absolute; LINE-HEIGHT: 29px; COLOR: #636b89; FONT-SIZE: 16px; TOP: 30px; LEFT: 172px
+}
+.font_gn {
+	POSITION: absolute; LINE-HEIGHT: 29px; WIDTH: 420px; COLOR: #636b89; FONT-SIZE: 16px; TOP: 30px; LEFT: 510px
+}
+.green {
+	BORDER-RIGHT-WIDTH: 0px; BACKGROUND-COLOR: transparent; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; COLOR: #090; BORDER-LEFT-WIDTH: 0px
+}
+.wrap {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+.sl {
+	POSITION: absolute; MARGIN: 0px; WIDTH: 100%; HEIGHT: 555px; COLOR: white; TOP: 0px; LEFT: 0px
+}
+.sl_iphone_1 {
+	BACKGROUND: url(../images/banner-1.jpg) repeat-x center top
+}
+.sl_iphone_2 {
+	BACKGROUND: url(../images/banner-2.jpg) repeat-x center top
+}
+.sl_iphone_2 .sl_con {
+	MARGIN: 191px 0px 0px 475px
+}
+.sl_iphone_2 .smallfont {
+	LINE-HEIGHT: 25px; MARGIN-TOP: 30px; FONT-SIZE: 14px
+}
+.sl_iphone_2_down {
+	POSITION: absolute; TEXT-INDENT: -9999px; WIDTH: 100px; DISPLAY: block; BACKGROUND: url(../images/sl_iphone_2_down1.png); HEIGHT: 31px; TOP: 335px; LEFT: 184px
+}
+.sl_iphone_2_down:hover {
+	BACKGROUND: url(../images/sl_iphone_2_down2.png)
+}
+.sl_iphone_2_down:visited {
+	BACKGROUND: url(../images/sl_iphone_2_down3.png)
+}
+.sl_iphone_3 {
+	BACKGROUND: url(../images/banner-3.jpg) repeat-x center top
+}
+.sl_iphone_4 {
+	BACKGROUND: url(../images/banner-4.jpg) repeat-x center top
+}
+.sl_iphone_4 .sl_con {
+	MARGIN: 216px 0px 0px 30px
+}
+.sl_iphone_4 .sl_con UL {
+	WIDTH: 440px
+}
+.sl_iphone_5 {
+	BACKGROUND: url(../images/banner-5.jpg) repeat-x center top
+}
+.sl_iphone_5 .sl_con {
+	MARGIN: 265px 0px 0px 555px
+}
+.sl_iphone_5 .sl_con UL {
+	WIDTH: 350px
+}
+.sl_iphone_6 {
+	BACKGROUND: url(../images/banner-6.jpg) repeat-x center top
+}
+.sl_iphone_6 .sl_con {
+	MARGIN: 193px 0px 0px 31px
+}
+.sl_iphone_6 .sl_con UL {
+	WIDTH: 350px
+}
+.sl_iphone_6 .btn_ljxq {
+	TEXT-INDENT: -9999px; WIDTH: 147px; DISPLAY: block; BACKGROUND: url(../images/banner-ljxq.png) no-repeat 0px 0px; HEIGHT: 54px
+}
+.sl_iphone_6 .btn_ljxq:hover {
+	BACKGROUND: url(../images/banner-ljxq2.png) no-repeat 0px 0px
+}
+.sl_iphone_6 .btn_ljxq:active {
+	BACKGROUND: url(../images/banner-ljxq.png) no-repeat 0px 0px
+}
+.sl_iphone_7 {
+	BACKGROUND: url(../images/banner-7.jpg) repeat-x center top
+}
+.sl_iphone_7 .wrap {
+	MARGIN: 0px auto; WIDTH: 960px; DISPLAY: block; HEIGHT: 555px
+}
+.sl_iphone_8 {
+	BACKGROUND: url(../images/banner-8.jpg) repeat-x center top
+}
+.sl_iphone_9 {
+	BACKGROUND: url(../images/banner-9.jpg) repeat-x center top
+}
+.sl_wrap {
+	POSITION: relative; WIDTH: 100%; HEIGHT: 555px; OVERFLOW: hidden; TOP: 0px; LEFT: 0px
+}
+.sl_wrap .wrap {
+	MARGIN: 0px auto; WIDTH: 960px
+}
+.sl_wrap .btn {
+	MARGIN-TOP: 20px
+}
+.sl_wrap_in {
+	Z-INDEX: 2; POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; TOP: 0px; LEFT: 0px
+}
+.sl_con UL {
+	MARGIN-TOP: 20px; FONT-SIZE: 18px
+}
+.sl_con UL LI {
+	LINE-HEIGHT: 31px; MARGIN-TOP: 12px; text-shadow: 0 1px 2px rgba(51, 51, 51, 0.5)
+}
+.sl_con {
+	MARGIN: 183px 0px 0px 35px; FONT-FAMILY: Î¢ÈíÑÅºÚ,ºÚÌå,ËÎÌå
+}
+.banner_prev {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 65px; DISPLAY: block; HEIGHT: 65px; TOP: 265px
+}
+.banner_next {
+	Z-INDEX: 10; POSITION: absolute; WIDTH: 65px; DISPLAY: block; HEIGHT: 65px; TOP: 265px
+}
+.banner_prev {
+	BACKGROUND: url(../images/banner_prev.png) no-repeat
+}
+.banner_next {
+	BACKGROUND: url(../images/banner_next.png) no-repeat
+}
+UNKNOWN {
+	POSITION: absolute; WIDTH: 960px; BOTTOM: 0px; BACKGROUND: url(../images/present-line.jpg) no-repeat left center; HEIGHT: 2px; CONTENT: ""
+}
+.present {
+	MARGIN: 0px auto; WIDTH: 100%; DISPLAY: block
+}
+.present LI {
+	POSITION: relative; MARGIN: 0px auto; WIDTH: 960px
+}
+.present LI:after {
+	POSITION: absolute; WIDTH: 960px; BOTTOM: 0px; BACKGROUND: url(../images/present-line.jpg) no-repeat left center; HEIGHT: 2px; CONTENT: ""
+}
+.present LI .presenttext {
+	POSITION: absolute; WIDTH: 420px; DISPLAY: block
+}
+.present LI H2 {
+	MARGIN-BOTTOM: 6px; COLOR: #636b89; FONT-SIZE: 24px; FONT-WEIGHT: normal
+}
+.present LI P {
+	LINE-HEIGHT: 24px; COLOR: #636b89; FONT-SIZE: 15px
+}
+.present001 {
+	BACKGROUND: url(../images/present001.jpg) no-repeat left center; HEIGHT: 373px
+}
+.present001 .presenttext {
+	TOP: 130px; LEFT: 510px
+}
+.present002 {
+	BACKGROUND: url(../images/present002.jpg) no-repeat right bottom; HEIGHT: 320px
+}
+.present002 .presenttext {
+	TOP: 80px; LEFT: 35px
+}
+.present003 {
+	BACKGROUND: url(../images/present003.jpg) no-repeat left bottom; HEIGHT: 330px
+}
+.present003 .presenttext {
+	TOP: 120px; LEFT: 510px
+}
+.present004 {
+	BACKGROUND: url(../images/present004.jpg) no-repeat right bottom; HEIGHT: 350px
+}
+.present004 .presenttext {
+	TOP: 120px; LEFT: 35px
+}
+.present005 {
+	BACKGROUND: url(../images/present005.jpg) no-repeat left center; HEIGHT: 390px
+}
+.present005 .presenttext {
+	TOP: 120px; LEFT: 510px
+}
+.present006 {
+	BACKGROUND: url(../images/present006.jpg) no-repeat right bottom; HEIGHT: 300px
+}
+.present006 .presenttext {
+	TOP: 90px; LEFT: 35px
+}
+.present007 {
+	BACKGROUND: url(../images/present007.jpg) no-repeat left center; HEIGHT: 373px
+}
+.present007 .presenttext {
+	TOP: 130px; LEFT: 510px
+}
+.present008 {
+	HEIGHT: 150px
+}
+.present LI.present008 .presenttext {
+	TEXT-ALIGN: center; WIDTH: 960px; TOP: 45px; LEFT: 0px
+}
+.present LI.present008:after {
+	POSITION: absolute; WIDTH: 960px; BOTTOM: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; HEIGHT: 2px; CONTENT: ""
+}
+.weixinapps {
+	PADDING-BOTTOM: 40px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 960px; PADDING-RIGHT: 0px; DISPLAY: block; BORDER-TOP: #c7c7cd 1px solid; PADDING-TOP: 40px
+}
+.clearfix:after {
+	CLEAR: both
+}
+.clearfix:before {
+	LINE-HEIGHT: 0; WIDTH: 0px; DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; FONT-SIZE: 0px; OVERFLOW: hidden; CONTENT: "."
+}
+.clearfix:after {
+	LINE-HEIGHT: 0; WIDTH: 0px; DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; FONT-SIZE: 0px; OVERFLOW: hidden; CONTENT: "."
+}
+.clearfix:before {
+	LINE-HEIGHT: 0; WIDTH: 0px; DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; FONT-SIZE: 0px; OVERFLOW: hidden; CONTENT: "."
+}
+.clearfix:after {
+	LINE-HEIGHT: 0; WIDTH: 0px; DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; FONT-SIZE: 0px; OVERFLOW: hidden; CONTENT: "."
+}
+.weixinapps .weixinapps-inner {
+	PADDING-BOTTOM: 0px; MARGIN: 0px auto; PADDING-LEFT: 25px; WIDTH: 940px; PADDING-RIGHT: 25px; PADDING-TOP: 0px
+}
+.weixinapps .app-box {
+	MARGIN: 0px auto; WIDTH: 920px
+}
+.weixinapps H2 {
+	COLOR: #636b89; FONT-SIZE: 16px; FONT-WEIGHT: normal
+}
+.weixinapps .app-item {
+	BORDER-BOTTOM: #e4e4e4 1px solid; TEXT-ALIGN: center; BORDER-LEFT: #e4e4e4 1px solid; PADDING-BOTTOM: 17px; MARGIN: 10px 10px 0px 0px; PADDING-LEFT: 5px; WIDTH: 90px; PADDING-RIGHT: 5px; DISPLAY: block; BACKGROUND: #f9f9f9 0px 0px; FLOAT: left; HEIGHT: 66px; COLOR: #666666; OVERFLOW: hidden; BORDER-TOP: #ffffff 1px solid; BORDER-RIGHT: #e4e4e4 1px solid; TEXT-DECORATION: none; PADDING-TOP: 17px; -moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px; border-image: none; transition: background 0.2s linear 0s
+}
+.weixinapps .app-item:hover {
+	BACKGROUND: #ffffff 0px 0px; COLOR: #3c7800
+}
+.weixinapps .app-item:hover A {
+	COLOR: #3c7800
+}
+.weixinapps .app-item IMG {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 48px; HEIGHT: 48px; BORDER-TOP: medium none; BORDER-RIGHT: medium none; -moz-border-radius: 30px; border-radius: 30px; -webkit-border-radius: 30px
+}
+.weixinapps .app-item SPAN {
+	TEXT-ALIGN: center; DISPLAY: block; WHITE-SPACE: nowrap; HEIGHT: 16px; OVERFLOW: hidden
+}
+.weixinapps .app-item:hover {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05)
+}
+.weixinapps .left-box {
+	FLOAT: right
+}
+.weixinapps .more {
+	MARGIN: 10px 12px 0px 0px; FLOAT: right
+}
+.more {
+	DISPLAY: inline-block; COLOR: #3c7800
+}
+.more:hover {
+	COLOR: #3c7800
+}
+.more .more-arrow {
+	LINE-HEIGHT: 13px; MARGIN: -3px 0px 0px 5px; WIDTH: 16px; DISPLAY: inline-block; BACKGROUND: url(../images/more.gif) no-repeat 0px center; HEIGHT: 16px; VERTICAL-ALIGN: middle; OVERFLOW: hidden
+}

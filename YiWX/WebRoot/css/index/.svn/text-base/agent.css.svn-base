@@ -1,0 +1,54 @@
+.focus{height:320px;margin-top:15px}
+.agentCnt{background:url(../../images/green/w1000bg.png) repeat-y}
+.agentCnt .agntC{height:540px}
+.ac2{background:#69bf5d}
+.ac4{background:#bfd0e9}
+.agntC h3{text-indent:-9999px;height:105px;background:url(../../images/index/agentTitle.png) no-repeat;}
+.ac2 h3{background-position:0 -105px}
+.ac3 h3{background-position:0 -210px}
+.ac4 h3{background-position:0 -315px}
+.ac5 h3{background-position:0 -420px}
+.agntC li{float:left;text-align:center}
+h4{color:#fff;font-size:18px}
+
+.acCnt{padding:0 75px}
+.acCnt p{font-size:16px;line-height:30px}
+
+.agentCnt .ac1{height:420px}
+.ac1 ul{margin-top:40px}
+.ac1 ul li{width:240px;height:230px;margin-right:60px}
+
+.agentCnt .ac2{height:660px}
+.ac2 ul{padding:20px 120px 0;height:480px}
+.ac2 ul li{height:140px;width:100px;margin:0 65px 20px 0}
+.ac2 ul li.mr0{margin-right:0}
+.btn_img{height:100px;width:100px;background:url(../../images/index/btn_agent.png) no-repeat;overflow:hidden}
+.ac2 .img2{background-position:-100px 0}
+.ac2 .img3{background-position:-200px 0}
+.ac2 .img4{background-position:-300px 0}
+.ac2 .img5{background-position:-400px 0}
+.ac2 .img6{background-position:0 -100px}
+.ac2 .img7{background-position:-100px -100px}
+.ac2 .img8{background-position:-200px -100px}
+.ac2 .img9{background-position:-300px -100px}
+.ac2 .img10{background-position:-400px -100px}
+.ac2 .img11{background-position:0 -200px}
+.ac2 .img12{background-position:-100px -200px}
+.ac2 .img13{background-position:-200px -200px}
+.ac2 .img14{background-position:-300px -200px}
+.ac2 .img15{background-position:-400px -200px}
+.ac2 h4{font-size:16px;line-height:40px;height:40px}
+
+.agentCnt .ac3{height:680px}
+.ac3 ul{padding:20px 0 0 88px}
+.ac3 ul li{width:320px;text-align:left;padding:0 80px 0 10px;margin-bottom:40px}
+.ac3 h4{color:#69bf5d;font-size:20px;text-align:left;line-height:30px}
+
+.ac4{background:#bfd0e9 url(../../images/index/liucheng.png) center 160px no-repeat}
+.agentCnt .ac5{height:800px;background:url(../../images/index/map.png) 350px 50px no-repeat;margin-bottom:20px;}
+.ac5 .acCnt{padding:0 90px}
+
+#qdjl{border-collapse:collapse}
+#qdjl tr{height:38px}
+#qdjl, #qdjl th, #qdjl td{border: 1px solid #b7e0f9}
+#qdjl td a{display:inline-block;width:90px;text-align:left;padding-left:30px;background:url(../../images/green/bt_blue_24X24.png) no-repeat}

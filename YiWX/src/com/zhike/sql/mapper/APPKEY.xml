@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.APPDAO">
+	<insert id="addNewAPP" parameterType="APPBean">
+		INSERT INTO WX_APP(ID,UID,WX_NAME,WX_ID,WX_ACCOUNT,WX_HEADER_URL,WX_URL,WX_TOKEN,
+		WX_APPKEY,WX_APPSECRET,WX_TYPE,WX_VERIFIED,CREATETIME,UPDATETIME)
+		VALUES(#{id},#{uid},#{wx_name},#{wx_id},#{wx_account},#{wx_header_url},#{wx_url},
+		#{wx_token},#{wx_appkey},#{wx_appsecret},#{wx_type},#{wx_verified},now(),now())
+	</insert>
+	
+	
+	<update id="editAppKey" parameterType="APPBean">
+		UPDATE LOW_PRIORITY wx_app
+		SET wx_name = #{wx_name}, wx_id = #{wx_id}, wx_account = #{wx_account}, wx_header_url = #{wx_header_url}, wx_type = #{wx_type}, wx_verified = #{wx_verified},UPDATETIME=now() 
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="delOneAppKey">
+		DELETE FROM WX_APP WHERE id= #{id}
+	</delete>
+	
+	
+	<select id="selectAllAPPS" resultType="APPBean">
+		SELECT * FROM WX_APP W
+	</select>
+	
+		
+	<select id="selectAllAPPSByUserId" parameterType="APPBean" resultType="APPBean">
+		SELECT * FROM WX_APP W WHERE W.UID = #{uid} ORDER BY ID DESC
+	</select>
+	
+	<select id="selectAppByUserIdAndAppId" parameterType="APPBean" resultType="APPBean">
+		SELECT * FROM WX_APP WHERE ID = #{id} AND UID = #{uid}
+	</select>
+	
+	
+	<delete id="deleteAppByUserIdAndAPPID" parameterType="APPBean">
+		DELETE FROM WX_APP WHERE ID = #{id} AND UID = #{uid}
+	</delete>
+	
+	<select id="selectAppKeyAndSecretByAPPID"  parameterType="APPBean" resultType="APPBean">
+		SELECT WX_APPKEY ,WX_APPSECRET ,WX_TOKEN FROM WX_APP WHERE ID = #{id} AND UID = #{uid}
+	</select>
+	
+	<update id="updateAppForAppkeyAndAppsecret" parameterType="APPBean">
+		UPDATE LOW_PRIORITY WX_APP
+		SET WX_APPKEY =  #{wx_appkey},WX_APPSECRET = #{wx_appsecret},updatetime = now()
+		WHERE id = #{id}
+	</update>
+	
+	<select id="selectIfAPPExists" parameterType="APPBean" resultType="int">
+		SELECT COUNT(*) FROM WX_APP WHERE ID = #{id}
+	</select>
+	
+</mapper>

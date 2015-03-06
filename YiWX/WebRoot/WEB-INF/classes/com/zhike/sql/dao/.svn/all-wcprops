@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/sql/dao
+END
+OrderDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/OrderDAO.java
+END
+QuanJingDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/QuanJingDAO.java
+END
+UserActionDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/java/!svn/ver/193/YiWX/src/com/zhike/sql/dao/UserActionDAO.java
+END
+LBSDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/LBSDAO.java
+END
+APPDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/APPDAO.java
+END
+MessageDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/MessageDAO.java
+END
+GuaguakaDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/GuaguakaDAO.java
+END
+PhotoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/PhotoDAO.java
+END
+ClockDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/sql/dao/ClockDAO.java
+END
+ActionLinkDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/ActionLinkDAO.java
+END
+ResearchDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/java/!svn/ver/161/YiWX/src/com/zhike/sql/dao/ResearchDAO.java
+END
+WxUserDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/sql/dao/WxUserDAO.java
+END
+MaterialDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/MaterialDAO.java
+END
+ActionLinkManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/ActionLinkManager.java
+END
+WebSiteDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/java/!svn/ver/133/YiWX/src/com/zhike/sql/dao/WebSiteDAO.java
+END
+MenuDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/MenuDAO.java
+END
+CheckLoginDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/CheckLoginDAO.java
+END
+MemberDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/java/!svn/ver/203/YiWX/src/com/zhike/sql/dao/MemberDAO.java
+END
+KeywordsDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/java/!svn/ver/107/YiWX/src/com/zhike/sql/dao/KeywordsDAO.java
+END

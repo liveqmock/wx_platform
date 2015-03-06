@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.LBSDAO">
+
+	<select id="selectAllByAppID" resultType="LBSBean">
+		SELECT * FROM WX_LBS WHERE APP_ID = #{app_id} ORDER BY id DESC
+	</select>
+
+	<select id="selectAllByAppIDByIsVip" resultType="LBSBean">
+		SELECT * FROM WX_LBS WHERE APP_ID = #{app_id} and isvip =  #{isVip}
+	</select>	
+	
+	
+	<insert id="insertOneLBS" parameterType="LBSBean">
+	 	INSERT INTO WX_LBS(app_id,title,img,desc_service,lng,lat,tel,address,isvip,createtime)
+	 	VALUES(#{app_id},#{title},#{img},#{desc_service},#{lng},#{lat},#{tel},#{address},#{isVip},now())
+	 </insert>	
+	 
+	<select id="selectOneLBSByID" resultType="LBSBean">
+		SELECT * FROM WX_LBS WHERE ID = #{id} 
+	</select>	
+	
+	
+	<update id="updateOneLBS" parameterType="LBSBean">
+		UPDATE LOW_PRIORITY WX_LBS
+		SET title = #{title},img =  #{img},desc_service =  #{desc_service},lng =  #{lng},lat =  #{lat},tel =  #{tel},
+					address =  #{address},isvip =  #{isVip}
+		WHERE id = #{id} and app_id = #{app_id}
+	</update>	
+
+	 <delete id="delOneLBS" parameterType="LBSBean">
+	 	DELETE FROM WX_LBS WHERE id = #{id} and app_id = #{app_id}
+	 </delete>
+
+	<select id="selectLBSByForDistance" resultType="LBSBean">
+		SELECT   *,
+		( 6371 * acos( cos( radians( #{lat} ) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians( #{lng}  ) ) + sin( radians( #{lat}  ) )* sin( radians( lat ) ) ) ) AS distance 
+		FROM wx_lbs 
+		where app_id =  #{app_id}
+		<![CDATA[having distance<#{distance} ]]>
+		ORDER BY distance  limit 0,#{count}; 
+	</select>		 	
+		
+</mapper>

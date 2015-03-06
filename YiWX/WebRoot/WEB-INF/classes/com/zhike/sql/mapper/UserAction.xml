@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.UserActionDAO">
+	<insert id="LogUserAction" parameterType="UserActionBean">
+		INSERT INTO WX_USERACTIONS(APPID,WID,EVENT,
+		ACTION,
+		ISREPLY,type,ACTIONTIME)
+		VALUES(#{appid},#{wid},#{event},
+		CAST(#{action} AS CHAR CHARACTER SET gbk),
+		#{isreply},#{type},now())
+	</insert>
+	
+	<select id="selectCountInfosByPage" resultType="int">
+		SELECT count(*) FROM wx_useractions 
+		WHERE  appid = #{appid} 
+		<if test="hidden == 1">
+		<![CDATA[and isreply = 0 ]]>
+		</if>	
+		<if test="type == 0">
+		<![CDATA[and type = 0 ]]>
+		</if>					
+	 </select>	
+
+	 <select id="selectInfosByPage" resultType="UserActionBean">
+		SELECT * FROM wx_useractions WHERE  appid = #{appid} 
+		<if test="hidden == 1">
+		<![CDATA[and isreply = 0 ]]>
+		</if>
+		<if test="type == 0">
+		<![CDATA[and type = 0 ]]>
+		</if>						
+		ORDER BY id DESC
+		LIMIT #{from},#{count} 
+	 </select>	
+</mapper>

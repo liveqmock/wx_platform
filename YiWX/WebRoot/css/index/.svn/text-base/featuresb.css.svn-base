@@ -1,0 +1,71 @@
+.features {
+	
+}
+
+.features .feature {
+	margin: 20px;
+	border: 1px solid #ccc;
+	padding: 20px;
+}
+
+.features .feature .name {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+
+.features .feature .description {
+	font-size: 14px;
+	color: #888;
+}
+
+.large-link-list li.plan-link {
+	width: 315px;
+}
+
+.lt-ie8 .large-link-list li.plan-link {
+	width: 215px;
+}
+
+.large-link-list li.collaborate-link {
+	width: 380px;
+}
+
+.lt-ie8 .large-link-list li.collaborate-link {
+	width: 280px;
+}
+
+.large-link-list li.export-link {
+	width: 300px;
+}
+
+.lt-ie8 .large-link-list li.export-link {
+	width: 200px;
+}
+
+.feature-list {
+	padding: 60px 0px;
+}
+
+.feature-list h2 {
+	margin-bottom: 20px;
+}
+
+.feature-list p {
+	margin: 1.5em 0;
+}
+
+.feature-list .span10 img {
+	margin-top: 20px;
+}
+
+.gc-well .green-checks {
+	margin: 0px 0px 1.5em 0px;
+}
+
+.gc-well .green-checks li {
+	margin-bottom: 10px;
+}
+
+.gc-well p {
+	margin: 1.5em 0px 0em 0px;
+}

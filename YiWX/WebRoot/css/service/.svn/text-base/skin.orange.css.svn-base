@@ -1,0 +1,105 @@
+/*页面整体颜色*/
+body {
+	color: #333333;
+	background: #FEFEFE;
+}
+
+a,a:link,a:visited,a:hover,a:active {
+	color: #EE7621;
+}
+
+/* ===== header & footer ===== */
+.header .h-content,.footer .f-content {
+	color: #EE7621;
+}
+
+/* ===== WIDGET ===== */
+.widget-panel .title {
+	background-color: #FFA500;
+	background-image: -webkit-linear-gradient(180deg, #FFA500, #FF8C00);
+	background-image: -moz-linear-gradient(180deg, #FFA500, #FF8C00);
+	background-image: -o-linear-gradient(180deg, #FFA500, #FF8C00);
+	background-image: -ms-linear-gradient(180deg, #FFA500, #FF8C00);
+	background-image: linear-gradient(180deg, #FFA500, #FF8C00);
+}
+
+.widget-panel .content {
+	
+}
+
+.widget-panel button {
+	background-color: #FFA500;
+	background-image: -webkit-linear-gradient(180deg, #FFA500, #EE7621);
+	background-image: -moz-linear-gradient(180deg, #FFA500, #EE7621);
+	background-image: -o-linear-gradient(180deg, #FFA500, #EE7621);
+	background-image: -ms-linear-gradient(180deg, #FFA500, #EE7621);
+	background-image: linear-gradient(180deg, #FFA500, #EE7621);
+}
+
+/* ===== widget-navigate ===== */
+.widget-box{
+	
+}
+
+/* ===== WIDGET-NAVIGATE ===== */
+.ui-navigator {
+	background: #FFA500;
+}
+
+.ui-navigator .ui-navigator-list li a.cur, .ui-navigator .ui-navigator-fix.cur{
+    background: #EE7621;
+}
+
+/* ===== CION2 ===== */
+.icon2 {
+	background: url(../img/icon.orange.png) no-repeat 6px 0;
+}
+
+.wbinvite {
+	background-position: 6px -38px;
+}
+
+.wbinvite2 {
+	background-position: 6px -382px;
+}
+
+.share {
+	background-position: 6px -206px;
+}
+
+.lbs {
+	background-position: 6px 13px;
+}
+
+.qq {
+	background-position: 6px -98px;
+}
+
+.icon2.phone {
+	background-position: 6px -155px;
+}
+
+.icon2.lottery{
+	background: url(../img/icon.png) no-repeat 6px -440px;
+}
+
+/* ===== MAP ===== */
+.widget-map .right-box a.goback_btn,.widget-map .right-box a.goback_detail_btn {
+	background: #e86800;
+	background-image:-moz-linear-gradient(top, #ff8400, #e86800);
+    background-image:-ms-linear-gradient(top, #ff8400, #e86800);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#ff8400), to(#e86800));
+    background-image:-webkit-linear-gradient(top, #ff8400, #e86800);
+    background-image:-o-linear-gradient(top, #ff8400, #e86800);
+    background-image:linear-gradient(top, #ff8400, #e86800);
+	border: 1px solid #e86800;
+}
+.widget-map .right-box a.goback_btn:hover,
+.widget-map .right-box a.goback_detail_btn:hover {
+	background-image:-moz-linear-gradient(top, #e86800, #ff8400);
+    background-image:-ms-linear-gradient(top, #e86800, #ff8400);
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#e86800), to(#ff8400));
+    background-image:-webkit-linear-gradient(top, #e86800, #ff8400);
+    background-image:-o-linear-gradient(top, #e86800, #ff8400);
+    background-image:linear-gradient(top, #e86800, #ff8400);
+}

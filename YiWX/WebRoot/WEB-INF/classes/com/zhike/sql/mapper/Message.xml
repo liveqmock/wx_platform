@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.MessageDAO">
+	<insert id="addNewMessage" parameterType="MessageBean">
+		INSERT INTO WX_MESSAGE(SENDER,TEL,TIME,TEXT,SERVICEID)
+		VALUES(#{sender},#{tel},now(),#{text},#{serviceid})
+	</insert>
+	
+	<select id="selectAllMessages" resultType="MessageBean" parameterType="MessagebasicBean">
+		SELECT * FROM WX_MESSAGE  WHERE serviceid = #{id} ORDER BY ID DESC 
+	</select>
+	
+	<select id="selectMessagesAll" resultType="MessageBean" parameterType="MessageBean">
+		SELECT * FROM WX_MESSAGE  WHERE  serviceid = #{id}
+		<if test="sender != ''">
+		<![CDATA[and sender like '%${sender}%' ]]>
+		</if>
+		<if test="text != ''">
+		<![CDATA[and text like '%${text}%' ]]>
+		</if>
+		ORDER BY ID DESC LIMIT #{from},#{count} 
+	</select>
+	
+	<delete id="delOneMessage" parameterType="MessageBean">
+		DELETE FROM WX_MESSAGE WHERE id= #{id}
+	</delete>
+	
+	<update id="updateMessage" parameterType="MessageBean">
+		UPDATE WX_MESSAGE
+		SET reply = #{reply}
+		WHERE id = #{id}
+	</update>
+	
+	<select id="selectCountInfosByPage" resultType="int">
+		SELECT count(*) FROM WX_MESSAGE WHERE   serviceid = #{id}
+		<if test="sender != ''">
+		<![CDATA[and sender like '%${sender}%' ]]>
+		</if>
+		<if test="text != ''">
+		<![CDATA[and text like '%${text}%' ]]>
+		</if>	
+	</select>	
+	 
+	<select id="selectOneMessagebasic" resultType="MessagebasicBean" parameterType="MessagebasicBean">
+		SELECT * FROM wx_message_basic  WHERE id = #{id} 
+	</select>
+		 
+	 
+	 
+	<insert id="addNewMessagebasic" parameterType="MessagebasicBean"  useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO WX_MESSAGE_BASIC(APPID,UID,TITLE,KEYWORDS,DESCS,IMG,CREATETIME)
+		VALUES(#{appid},#{uid},#{title},#{keywords},#{descs},#{img},now())
+	</insert>
+	
+	<update id="updateMessagebasic" parameterType="MessagebasicBean">
+		UPDATE WX_MESSAGE_BASIC
+		SET title = #{title},keywords = #{keywords},descs = #{descs},img = #{img},createtime = now()
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="delOneMessagebasic" parameterType="MessagebasicBean">
+		DELETE FROM WX_MESSAGE_BASIC WHERE id= #{id}
+	</delete>
+	
+	<delete id="delMessageByServiceid" parameterType="MessagebasicBean">
+		DELETE FROM WX_MESSAGE WHERE SERVICEID= #{id}
+	</delete>
+	
+	<select id="getMessagebasicBean" resultType="MessagebasicBean" parameterType="MessagebasicBean">
+		SELECT * FROM WX_MESSAGE_BASIC WHERE id= #{id} AND APPID = #{appid} and uid = #{uid}
+	</select>
+	
+	<select id="selectAllMessagebasic" resultType="MessagebasicBean" parameterType="MessagebasicBean">
+		SELECT * FROM WX_MESSAGE_BASIC W WHERE W.APPID = #{appid} AND UID= #{uid} ORDER BY ID DESC 
+		<!-- ORDER BY ID DESC LIMIT #{from},#{count} -->
+	</select>
+	
+	<select id="selectCountmbasicInfosByPage" resultType="int" parameterType="MessagebasicBean">
+		SELECT count(*) FROM WX_MESSAGE_BASIC WHERE  APPID = #{appid} 
+	</select>	
+	
+</mapper>

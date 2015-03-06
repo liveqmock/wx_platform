@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper文件最好放在与Dao接口同一目录下 -->
+
+<mapper namespace="com.data.crawler.dao.CrawlerTaskForUserDAO">
+	<select id="selectAllCrawlerTaskForUser" parameterType="CrawlerTaskForUserBean" resultMap="CrawlerTaskForUserBeans">
+		SELECT * FROM CrawlerTaskForUser
+	</select>
+	
+	<update id="updateSinceId" parameterType="CrawlerTaskForUserBean">
+		UPDATE CrawlerTaskForUser SET SINCE_ID = #{since_id} WHERE id = #{id}
+	</update>
+	
+	<resultMap type="CrawlerTaskForUserBean" id="CrawlerTaskForUserBeans"></resultMap>
+
+	<!--  <select id="selectUserByUserName" parameterType="CheckLoginBean" resultType="CheckLoginBean">
+		SELECT * FROM WX_USERS U WHERE U.USERNAME = #{username} 
+	</select>
+	
+	<insert id="addNewUser" parameterType="CheckLoginBean">
+		INSERT INTO WX_USERS(USERNAME,PASSWORD,EMAIL,CREATETIME,LASTTIME,STATUS,CREATEIP,LASTIP,MONEY,MOBILE,QQ,CONTACT)
+		 VALUES(#{username},#{password},#{email},now(),now(),1,#{createip},#{lastip},0,#{mobile},#{qq},#{contact})
+	</insert>
+	
+	<select id="selectUserCountByUserName" parameterType="CheckLoginBean" resultType="int">
+		SELECT COUNT(*) FROM WX_USERS U WHERE U.USERNAME = #{username} LIMIT 1
+	</select>
+
+	<update id="updateCheckLoginBean" parameterType="CheckLoginBean">
+		UPDATE WX_USERS
+		SET password = #{password},email = #{email},mobile = #{mobile},qq = #{qq},contact = #{contact}
+		WHERE id = #{id}
+	</update>-->
+</mapper>

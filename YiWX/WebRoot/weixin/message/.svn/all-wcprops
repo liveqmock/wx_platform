@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/java/!svn/ver/190/YiWX/WebRoot/weixin/message
+END
+messages.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/message/messages.jsp
+END
+wx_message_cog_result.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/message/wx_message_cog_result.jsp
+END
+wx_messagebasic_edit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/java/!svn/ver/190/YiWX/WebRoot/weixin/message/wx_messagebasic_edit.jsp
+END
+wx_message_cog.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/message/wx_message_cog.jsp
+END
+wx_messagebasic_add.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/java/!svn/ver/190/YiWX/WebRoot/weixin/message/wx_messagebasic_add.jsp
+END
+wx_messagebasic_list.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/message/wx_messagebasic_list.jsp
+END
+allmessages.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/java/!svn/ver/107/YiWX/WebRoot/weixin/message/allmessages.jsp
+END

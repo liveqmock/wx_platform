@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.MenuDAO">
+
+	<update id="addNewMenuByAppId" parameterType="MaterialBean">
+		INSERT INTO WX_MENUS(USERID,APPID,APPKEY,APPSECRET,MENUS,UPDATETIME,ISOPEN)
+		VALUES(#{userId},#{appId},#{appKey},#{appSecret},#{menus},now(),#{isopen})
+	</update>
+
+	<delete id="deleteMenuBYAppId" parameterType="MenuBean">
+		DELETE FROM WX_MENUS WHERE USERID = #{userId} AND APPID = #{appId}
+	</delete>
+	
+	<select id="selectMenuByAppId" parameterType="MenuBean" resultType="MenuBean">
+		SELECT * FROM WX_MENUS WHERE USERID = #{userId} AND APPID = #{appId}
+	</select>
+	
+</mapper>

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/java/!svn/ver/203/YiWX/src
+END
+struts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/java/!svn/ver/203/YiWX/src/struts.xml
+END
+mybatis-config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/java/!svn/ver/107/YiWX/src/mybatis-config.properties
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/java/!svn/ver/203/YiWX/src/applicationContext.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/java/!svn/ver/107/YiWX/src/log4j.properties
+END
+MyBatis-Configuration.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/java/!svn/ver/203/YiWX/src/MyBatis-Configuration.xml
+END

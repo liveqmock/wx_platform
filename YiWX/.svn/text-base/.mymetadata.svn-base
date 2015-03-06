@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="YiWX"
+  id="myeclipse.1385439583984"
+  context-root="/YiWX"
+  j2ee-spec="5.0"
+  archive="YiWX.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.MemberDAO">
+
+	<select id="selectAllByAppID" resultType="MemberBean">
+		SELECT * FROM WX_MEMBER WHERE APP_ID = #{app_id} ORDER BY id DESC
+	</select>
+
+	<insert id="insertOneMember" parameterType="MemberBean" useGeneratedKeys="true" keyProperty="id">
+	 	INSERT INTO WX_MEMBER(app_id,keywords,title,img,desc_service,card_name,card_logo,card_template,card_explain,
+	 	card_notice1,card_notice1_content,card_notice2,card_notice2_content,card_notice3,card_notice3_content,
+	 	card_yue,card_jifen,card_integral,createtime,card_color_name,card_color_number,
+	 	card_welcome,card_contuine_integral,card_new_yue,card_new_jifen,card_rule_xiaofei,card_rule_zengsong,
+	 	card_perfect_info,card_issupport,card_issupport_check,
+	 	card_type,card_type_img
+	 	)
+	 	VALUES(#{app_id},#{keywords},#{title},#{img},#{desc_service},#{card_name},#{card_logo},#{card_template},#{card_explain},
+	 	#{card_notice1},#{card_notice1_content},#{card_notice2},#{card_notice2_content},#{card_notice3},#{card_notice3_content},
+	 	#{card_yue},#{card_jifen},#{card_integral},now(),#{card_color_name},#{card_color_number},
+	 	#{card_welcome},#{card_contuine_integral},#{card_new_yue},#{card_new_jifen},#{card_rule_xiaofei},#{card_rule_zengsong},
+	 	#{card_perfect_info},#{card_issupport},#{card_issupport_check},
+	 	#{card_type},#{card_type_img}
+	 	)
+	 </insert>	
+	 
+	<select id="selectOneMemberInfo" resultType="MemberInfoBean">
+		SELECT * FROM WX_MEMBER_INFO WHERE SERVICE_ID = #{service_id} and OPENID =  #{openid}
+	</select>
+	
+	<select id="selectOneMemberInfoById" resultType="MemberInfoBean">
+		SELECT * FROM WX_MEMBER_INFO WHERE ID = #{id} 
+	</select>		 
+	 	
+	<select id="selectOneMember" resultType="MemberBean">
+		SELECT * FROM WX_MEMBER WHERE ID = #{id}
+	</select>	
+	
+	<insert id="insertOneMemberInfo" parameterType="MemberBean" useGeneratedKeys="true" keyProperty="id">
+	 	INSERT INTO WX_MEMBER_INFO
+	 	(service_id,openid,yue,jifen,createtime)
+	 	VALUES
+	 	(#{service_id},#{openid},#{yue},#{jifen},now())
+	 </insert>		
+
+	 <delete id="delOneMember" parameterType="MemberBean">
+	 	DELETE FROM WX_MEMBER WHERE id = #{id} and app_id = #{app_id}
+	 </delete>			
+			
+	 <delete id="delInfosByServiceId" parameterType="MemberBean">
+	 	DELETE FROM WX_MEMBER_INFO WHERE SERVICE_ID = #{id}
+	 </delete>	
+	
+	<delete id="delInfoCogsByServiceId" parameterType="MemberBean">
+	 	DELETE FROM WX_MEMBER_INFO_COG WHERE SERVICE_ID = #{id}
+	 </delete>	 
+
+	<delete id="delEntityCardByServiceId" parameterType="MemberBean">
+	 	DELETE FROM wx_member_entitycard WHERE SERVICE_ID = #{id}
+	 </delete>	 
+	 	 
+	 
+	 
+	<update id="updateOneMember" parameterType="MemberBean">
+		UPDATE LOW_PRIORITY WX_MEMBER
+		SET keywords = #{keywords},title = #{title},img =  #{img},desc_service =  #{desc_service},card_logo =  #{card_logo},
+			card_template = #{card_template},card_name = #{card_name},card_explain = #{card_explain},card_yue = #{card_yue},
+			card_jifen = #{card_jifen},card_notice1 = #{card_notice1},card_notice1_content = #{card_notice1_content},card_notice2 = #{card_notice2},
+			card_notice2_content = #{card_notice2_content},card_notice3 = #{card_notice3},card_notice3_content = #{card_notice3_content},
+			card_integral = #{card_integral},card_color_name = #{card_color_name},card_color_number = #{card_color_number},updatetime = now(),
+			card_welcome = #{card_welcome},card_new_yue = #{card_new_yue},card_new_jifen = #{card_new_jifen},card_contuine_integral = #{card_contuine_integral},
+			card_rule_xiaofei = #{card_rule_xiaofei},card_rule_zengsong = #{card_rule_zengsong},
+			card_perfect_info = #{card_perfect_info},card_issupport = #{card_issupport},card_issupport_check = #{card_issupport_check},
+			card_type = #{card_type},card_type_img = #{card_type_img}
+		WHERE id = #{id} and app_id = #{app_id}
+	</update>			 
+
+
+
+	 <select id="selectCountInfosByPage" resultType="int">
+		SELECT count(*) FROM WX_MEMBER_INFO WHERE  SERVICE_ID = #{service_id} 
+		<if test="temp != ''">
+		<![CDATA[and id like  '%${temp}%'  ]]>
+		</if>	
+		<if test="card_name != ''">
+		<![CDATA[and card_name like  '%${card_name}%'  ]]>
+		</if>
+		<if test="card_tel != ''">
+		<![CDATA[and card_tel like  '%${card_tel}%'  ]]>
+		</if>						
+	 </select>	
+
+	 <select id="selectInfosByPage" resultType="MemberInfoBean">
+		SELECT * FROM WX_MEMBER_INFO WHERE  SERVICE_ID = #{service_id} 
+		<if test="temp != ''">
+		<![CDATA[and id like  '%${temp}%'  ]]>
+		</if>			
+		<if test="card_name != ''">
+		<![CDATA[and card_name like  '%${card_name}%'  ]]>
+		</if>
+		<if test="card_tel != ''">
+		<![CDATA[and card_tel like  '%${card_tel}%'  ]]>
+		</if>		
+		ORDER BY id DESC
+		LIMIT #{from},#{count} 
+	 </select>	
+
+
+	 <select id="selectCountInfoListByPage" resultType="int">
+		SELECT count(*) FROM WX_MEMBER_INFO_COG WHERE  memberInfo_id = #{memberInfo_id} 
+		<if test="member_type != 0">
+		<![CDATA[and member_type = #{member_type} ]]>
+		</if>
+		<if test="member_lbs != 0">
+		<![CDATA[and member_lbs = #{member_lbs} ]]>
+		</if>			
+	 </select>	
+
+	 <select id="selectInfoListByPage" resultType="MemberInfoCogBean">
+		SELECT * FROM WX_MEMBER_INFO_COG WHERE  memberInfo_id = #{memberInfo_id}
+		<if test="member_type != 0">
+		<![CDATA[and member_type = #{member_type} ]]>
+		</if>
+		<if test="member_lbs != 0">
+		<![CDATA[and member_lbs = #{member_lbs} ]]>
+		</if>			
+		ORDER BY id DESC
+		LIMIT #{from},#{count} 
+	 </select>	
+	 	 	 
+	<insert id="insertOneMemberInfoCog" parameterType="MemberInfoCogBean">
+	 	INSERT INTO WX_MEMBER_INFO_COG
+	 	(memberInfo_id,service_id,member_type,member_number,member_lbs,member_explan,createtime)
+	 	VALUES
+	 	(#{memberInfo_id},#{service_id},#{member_type},#{member_number},#{member_lbs},#{member_explan},now()
+	 	)
+	 </insert>	
+	 
+	<update id="updateOneMemberInfoForYueAndJifen" parameterType="MemberInfoBean">
+		 UPDATE LOW_PRIORITY WX_MEMBER_INFO
+		SET yue = yue + #{yue},jifen = jifen +  #{jifen},updatetime = now()
+		WHERE id = #{id} and service_id = #{service_id}	
+	</update>	
+
+	<update id="updateOneMemberInfoForRemark" parameterType="MemberInfoBean">
+		 UPDATE LOW_PRIORITY WX_MEMBER_INFO
+		SET card_name = #{card_name},card_sex =  #{card_sex},card_tel =  #{card_tel},card_birthday =  #{card_birthday},card_remark =  #{card_remark},updatetime = now()
+		WHERE id = #{id} 
+	</update>	
+	
+	 <select id="selectForIsCheck" resultType="int">
+		SELECT COUNT(*) FROM WX_MEMBER_INFO_COG WHERE memberInfo_id = #{id} AND member_type = 5 AND  UNIX_TIMESTAMP(createtime) >  #{createtime}
+	 </select>		 	 	 	 
+
+	<!-- 实体会员卡分页 -->
+	<select id="selectCountEntityCardByPage" resultType="int">
+		SELECT count(*) FROM wx_member_entitycard WHERE  SERVICE_ID = #{service_id} 
+		<if test="card_id != ''">
+		<![CDATA[and card_id like  '%${card_id}%'  ]]>
+		</if>
+		<if test="card_name != ''">
+		<![CDATA[and card_name like   '%${card_name}%' ]]>
+		</if>				
+		<if test="card_birthday != ''">
+		<![CDATA[and card_birthday like   '%${card_birthday}%'  ]]>
+		</if>					
+	 </select>	
+
+	 <select id="selectEntityCardByPage" resultType="MemberEntityCardBean">
+		SELECT * FROM wx_member_entitycard WHERE  SERVICE_ID = #{service_id} 
+		<if test="card_id != ''">
+		<![CDATA[and card_id like  '%${card_id}%'  ]]>
+		</if>
+		<if test="card_name != ''">
+		<![CDATA[and card_name like   '%${card_name}%'  ]]>
+		</if>	
+		<if test="card_birthday != ''">
+		<![CDATA[and card_birthday like   '%${card_birthday}%'  ]]>
+		</if>		
+			
+		ORDER BY id DESC
+		LIMIT #{from},#{count} 
+	 </select>	
+
+	<insert id="insertOneEntityCard" parameterType="MemberEntityCardBean">
+	 	INSERT INTO wx_member_entitycard
+	 	(service_id,card_id,card_password,card_sex,card_name,
+	 	card_birthday,card_tel,card_remark,card_yue,card_jifen,card_used)
+	 	VALUES
+	 	(#{service_id},#{card_id},#{card_password},#{card_sex},#{card_name},
+	 	#{card_birthday},#{card_tel},#{card_remark},#{card_yue},#{card_jifen},0
+	 	)
+	 </insert>	
+	
+	<update id="updateOneEntityCard" parameterType="MemberEntityCardBean">
+		 UPDATE LOW_PRIORITY wx_member_entitycard
+		SET card_id = #{card_id},card_password =  #{card_password},card_sex =  #{card_sex},card_name =  #{card_name},
+		card_birthday =  #{card_birthday},card_tel =  #{card_tel},card_remark =  #{card_remark},card_yue =  #{card_yue},card_jifen =  #{card_jifen}
+		WHERE id = #{id} and service_id = #{service_id}	
+	</update>	
+	
+	<delete id="delOneEntityCard" parameterType="MemberEntityCardBean">
+	 	DELETE FROM wx_member_entitycard WHERE  id = #{id}  and service_id = #{service_id}
+	 </delete>
+	
+	
+	<select id="selectEntityCardByCheck" parameterType="MemberEntityCardBean" resultType="MemberEntityCardBean">
+		SELECT * FROM wx_member_entitycard 
+		WHERE service_id = #{service_id} 
+		and card_used = 0
+		and card_id =  #{card_id} 
+		<if test="card_password != null">
+		<![CDATA[and card_password =  #{card_password}   ]]>
+		</if>	
+		<if test="card_tel != null">
+		<![CDATA[and card_tel =  #{card_tel}   ]]>
+		</if>				
+		<if test="card_name != null">
+		<![CDATA[and card_name =  #{card_name}   ]]>
+		</if>	
+	</select>
+
+	<select id="selectEntityCardByCardId" parameterType="MemberEntityCardBean" resultType="MemberEntityCardBean">
+		SELECT * FROM wx_member_entitycard 
+		WHERE service_id = #{service_id} 
+		and card_id =  #{card_id} 
+	</select>
+			
+	<update id="useOneEntityCard" parameterType="MemberEntityCardBean">
+		 UPDATE LOW_PRIORITY wx_member_entitycard
+		SET card_used = 1
+		WHERE id = #{id} and service_id = #{service_id}	
+	</update>	
+	
+	<update id="bindOneMemberInfo" parameterType="MemberInfoBean">
+		 UPDATE LOW_PRIORITY wx_member_info
+		SET card_binded = 1
+		WHERE id = #{id} and service_id = #{service_id}	
+	</update>	
+	
+	<update id="perfectOneMemberInfo" parameterType="MemberInfoBean">
+		 UPDATE LOW_PRIORITY wx_member_info
+		SET card_id = #{card_id},card_name = #{card_name},card_sex = #{card_sex},
+			card_tel = #{card_tel},card_birthday = #{card_birthday},card_remark = #{card_remark},info_perfect =  #{info_perfect}
+		WHERE id = #{id} and service_id = #{service_id}	
+	</update>
+	
+</mapper>

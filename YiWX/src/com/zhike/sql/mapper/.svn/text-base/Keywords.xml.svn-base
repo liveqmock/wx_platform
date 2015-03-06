@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.KeywordsDAO">
+	<!-- 
+		public int addKeywordByUserAndAppId(KeywordsBean keywordBean);
+
+	public int deleteKeywordByUserAndAppId(KeywordsBean keywordBean);
+
+	public KeywordsBean selectKeywordByUserAndAppId(KeywordsBean keywordBean);
+		public int id;// 主键
+	public int wx_uid;// 用户的id
+	public long wx_app_keyid;// 对应的应用程序的id
+	public String wx_keyword_createtime;// 创建时间
+	public String wx_keyword_updatetime;// 添加时间
+	public String wx_keyword_content;// 关键词的内容
+	public String wx_msg_type;// 回复的消息值0,关注，1 默认 2 自动回复
+	public String wx_keyword_rulename;// 规则名
+	public String wx_msg_reply_type;// 回复类型
+	public String wx_msg_reply_text;// 回复的消息内容
+	public long wx_msg_reply_template;// 回复的消息模版
+	 -->
+	 
+	 <insert id="addKeywordByUserAndAppId" parameterType="KeywordsBean" useGeneratedKeys="true" keyProperty="id">
+	 	INSERT INTO WX_KEYWORDS(wx_uid,wx_app_keyid,wx_keyword_createtime,wx_keyword_updatetime,wx_keyword_content,wx_msg_type,wx_keyword_rulename,wx_msg_reply_type,wx_msg_reply_text,wx_msg_reply_template)
+	 	VALUES(#{wx_uid},#{wx_app_keyid},now(),now(),#{wx_keyword_content},#{wx_msg_type},#{wx_keyword_rulename},#{wx_msg_reply_type},#{wx_msg_reply_text},#{wx_msg_reply_template})
+	 </insert>
+	 
+	 <update id="updateKeywordByUserAndAppId" parameterType="KeywordsBean">
+	 	UPDATE WX_KEYWORDS SET 
+	 		wx_keyword_updatetime = now(),
+	 		wx_keyword_content = #{wx_keyword_content},
+	 		wx_msg_type = #{wx_msg_type},
+	 		wx_keyword_rulename = #{wx_keyword_rulename},
+	 		wx_msg_reply_type = #{wx_msg_reply_type},
+	 		wx_msg_reply_text = #{wx_msg_reply_text},
+	 		wx_msg_reply_template = #{wx_msg_reply_template}
+	 		WHERE id = ${id} AND wx_uid = #{wx_uid} AND wx_app_keyid = #{wx_app_keyid} 
+	 </update>
+	 
+	 <delete id="deleteKeywordByUserAndAppId" parameterType="KeywordsBean">
+	 	DELETE FROM WX_KEYWORDS WHERE id = #{id} AND wx_uid = #{wx_uid} AND wx_app_keyid = #{wx_app_keyid} 
+	 </delete>
+	 
+	 <delete id="deleteKeywordByIdAndAppId" parameterType="KeywordsBean">
+	 	DELETE FROM WX_KEYWORDS WHERE id = #{id} AND wx_uid = #{wx_uid} AND wx_app_keyid = #{wx_app_keyid} 
+	 </delete>
+	 
+	 <select id="selectKeywordCountByAPPID" parameterType="KeywordsBean" resultType="int">
+	 	SELECT COUNT(ID) FROM WX_KEYWORDS WHERE wx_app_keyid = #{wx_app_keyid} AND wx_msg_type = #{wx_msg_type}
+	 </select>
+	 
+	 <select id="selectKeywordByUserAndAppId" parameterType="KeywordsBean" resultMap="KeywordsAndMaterial">
+			SELECT 
+	 			WX_K.id as k_id ,
+	 			WX_K.wx_app_keyid as k_app_keyid,
+	 			WX_K.wx_keyword_createtime as k_createtime,
+	 			WX_K.wx_keyword_updatetime as k_updatetime,
+	 			WX_K.wx_keyword_content as k_content,
+	 			WX_K.wx_msg_type as k_msg_type,
+	 			WX_K.wx_keyword_rulename as k_rulename,
+	 			WX_K.wx_msg_reply_type as k_reply_type,
+	 			WX_K.wx_msg_reply_text as k_reply_text,
+	 			WX_K.wx_msg_reply_template as k_reply_template,
+	 			
+	 			WX_M.id as m_id , 
+	 			WX_M.wx_uid as m_uid,
+	 			WX_M.wx_appkey_id as m_appkey_id,
+	 			WX_M.wx_material_length as m_material_length,
+	 			WX_M.wx_title as m_title,
+	 			WX_M.wx_author as m_author,
+	 			WX_M.wx_content as m_content,
+	 			WX_M.wx_desc as m_desc,
+	 			WX_M.wx_img as m_img,
+	 			WX_M.wx_createtime as m_createtime,
+	 			WX_M.wx_updatetime as m_updatetime,
+	 			WX_M.wx_type as m_type,
+	 			WX_M.wx_template_type as m_template_type,
+	 			WX_M.wx_link as m_link
+	 			
+	 	FROM WX_KEYWORDS WX_K LEFT JOIN WX_MATERIAL WX_M  ON WX_K.wx_msg_reply_template = WX_M.id
+	 	
+	 	WHERE WX_K.wx_uid = #{wx_uid} AND WX_K.wx_app_keyid = #{wx_app_keyid} AND WX_K.wx_msg_type = #{wx_msg_type}
+	 	
+	 </select>
+	 
+	 <select id="selectKeywordForKeywordReply" parameterType="KeywordsBean" resultMap="KeywordsAndMaterial">
+		 SELECT 
+	 			WX_K.wx_keyword_content as k_content,
+	 			WX_K.wx_msg_type as k_msg_type,
+	 			WX_K.wx_keyword_rulename as k_rulename,
+	 			WX_K.wx_msg_reply_type as k_reply_type,
+	 			WX_K.wx_msg_reply_text as k_reply_text,
+	 			WX_K.wx_msg_reply_template as k_reply_template,
+	 			
+	 			WX_M.id as m_id , 
+	 			WX_M.wx_material_length as m_material_length,
+	 			WX_M.wx_title as m_title,
+	 			WX_M.wx_author as m_author,
+	 			WX_M.wx_content as m_content,
+	 			WX_M.wx_desc as m_desc,
+	 			WX_M.wx_img as m_img,
+	 			WX_M.wx_type as m_type,
+	 			WX_M.wx_template_type as m_template_type,
+	 			WX_M.wx_createtime as m_createtime,
+	 			WX_M.wx_link as m_link
+	 	FROM WX_KEYWORDS WX_K LEFT JOIN WX_MATERIAL WX_M ON WX_K.wx_msg_reply_template = WX_M.id 
+	 	WHERE WX_K.wx_app_keyid = #{wx_app_keyid} AND (WX_K.wx_keyword_content LIKE '%${wx_keyword_content}%' OR WX_K.wx_msg_type = 1 )ORDER BY WX_K.ID LIMIT 2
+	  </select>
+	  
+	  <select id="selectKeywordForFocus" parameterType="KeywordsBean" resultMap="KeywordsAndMaterial">
+	  	 SELECT 
+	 			WX_K.wx_keyword_content as k_content,
+	 			WX_K.wx_msg_type as k_msg_type,
+	 			WX_K.wx_keyword_rulename as k_rulename,
+	 			WX_K.wx_msg_reply_type as k_reply_type,
+	 			WX_K.wx_msg_reply_text as k_reply_text,
+	 			WX_K.wx_msg_reply_template as k_reply_template,
+	 			
+	 			WX_M.id as m_id , 
+	 			WX_M.wx_material_length as m_material_length,
+	 			WX_M.wx_title as m_title,
+	 			WX_M.wx_author as m_author,
+	 			WX_M.wx_content as m_content,
+	 			WX_M.wx_desc as m_desc,
+	 			WX_M.wx_img as m_img,
+	 			WX_M.wx_type as m_type,
+	 			WX_M.wx_template_type as m_template_type,
+	 			WX_M.wx_createtime as m_createtime,
+	 			WX_M.wx_link as m_link
+	 	FROM WX_KEYWORDS WX_K LEFT JOIN WX_MATERIAL WX_M ON WX_K.wx_msg_reply_template = WX_M.id WHERE WX_K.wx_app_keyid = #{wx_app_keyid} AND WX_K.wx_msg_type = 0 LIMIT 1 
+	  </select>
+	  
+	  <!-- WX_K.wx_app_keyid = 1389343059045 AND  -->
+	 
+	  <select id="selectKeywordListByUserAndAppId" parameterType="KeywordsBean" resultMap="KeywordsAndMaterial">
+			SELECT 
+	 			WX_K.id as k_id ,
+	 			WX_K.wx_app_keyid as k_app_keyid,
+	 			WX_K.wx_keyword_createtime as k_createtime,
+	 			WX_K.wx_keyword_updatetime as k_updatetime,
+	 			WX_K.wx_keyword_content as k_content,
+	 			WX_K.wx_msg_type as k_msg_type,
+	 			WX_K.wx_keyword_rulename as k_rulename,
+	 			WX_K.wx_msg_reply_type as k_reply_type,
+	 			WX_K.wx_msg_reply_text as k_reply_text,
+	 			WX_K.wx_msg_reply_template as k_reply_template,
+	 			
+	 			WX_M.id as m_id , 
+	 			WX_M.wx_uid as m_uid,
+	 			WX_M.wx_appkey_id as m_appkey_id,
+	 			WX_M.wx_material_length as m_material_length,
+	 			WX_M.wx_title as m_title,
+	 			WX_M.wx_author as m_author,
+	 			WX_M.wx_content as m_content,
+	 			WX_M.wx_desc as m_desc,
+	 			WX_M.wx_img as m_img,
+	 			WX_M.wx_createtime as m_createtime,
+	 			WX_M.wx_updatetime as m_updatetime,
+	 			WX_M.wx_type as m_type,
+	 			WX_M.wx_template_type as m_template_type,
+	 			WX_M.wx_link as m_link
+	 	FROM WX_KEYWORDS WX_K LEFT JOIN WX_MATERIAL WX_M  ON WX_K.wx_msg_reply_template = WX_M.id
+	 	
+	 	WHERE WX_K.wx_uid = #{wx_uid} AND WX_K.wx_app_keyid = #{wx_app_keyid} AND WX_K.wx_msg_type = #{wx_msg_type}
+	 </select>
+	 
+	 <resultMap type="KeywordsBean" id="KeywordsAndMaterial">
+			<id property="id" column="k_id"/>
+		 	<result property="wx_keyword_createtime" column="k_createtime"/>
+		 	<result property="wx_keyword_updatetime" column="k_updatetime"/>
+		 	<result property="wx_keyword_content" column="k_content"/>
+		 	<result property="wx_msg_type" column="k_msg_type"/>
+		 	<result property="wx_keyword_rulename" column="k_rulename"/>
+		 	<result property="wx_msg_reply_type" column="k_reply_type"/>
+		 	<result property="wx_msg_reply_text" column="k_reply_text"/>
+		 	<result property="wx_msg_reply_template" column="k_reply_template"/>
+	 		<association property="materialBean" javaType="MaterialBean" resultMap="MaterialBeanMap"></association>
+	 </resultMap>
+	 
+	 <resultMap type="KeywordsBean" id="KeywordsBeanMap">
+		 	<id property="id" column="k_id"/>
+		 	<result property="wx_keyword_createtime" column="k_createtime"/>
+		 	<result property="wx_keyword_updatetime" column="k_updatetime"/>
+		 	<result property="wx_keyword_content" column="k_content"/>
+		 	<result property="wx_msg_type" column="k_msg_type"/>
+		 	<result property="wx_keyword_rulename" column="k_rulename"/>
+		 	<result property="wx_msg_reply_type" column="k_reply_type"/>
+		 	<result property="wx_msg_reply_text" column="k_reply_text"/>
+		 	<result property="wx_msg_reply_template" column="k_reply_template"/>
+	 </resultMap>
+	 
+	 <resultMap type="MaterialBean" id="MaterialBeanMap">
+	 	    <id property="id" column="m_id"/>
+            <result property="wx_uid" column="m_uid"/>
+            <result property="wx_appkey_id" column="m_appkey_id"/>
+            <result property="wx_material_length" column="m_material_length"/>
+            <result property="wx_title" column="m_title"/>
+            <result property="wx_author" column="m_author"/>
+            <result property="wx_content" column="m_content"/>
+            <result property="wx_desc" column="m_desc"/>
+            <result property="wx_img" column="m_img"/>
+            <result property="wx_createtime" column="m_createtime"/>
+            <result property="wx_updatetime" column="m_updatetime"/>
+            <result property="wx_type" column="m_type"/>
+            <result property="wx_template_type" column="m_template_type"/>
+            <result property="wx_link" column="m_link"/>
+	 </resultMap>
+	 
+</mapper>

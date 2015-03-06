@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.WebSiteDAO">
+				
+	<update id="updateWebsiteByAppId" parameterType="WebsiteBean">
+		UPDATE WX_WEBSITES SET DATAS = #{datas} , UPDATETIME = now(), ISOPEN = #{isopen},tempnum = #{tempnum}
+		WHERE  USERID = #{userId} AND APPID = #{appId}
+	</update>
+	
+	<insert id="addNewWebsiteByAppId" parameterType="WebsiteBean">
+		INSERT INTO WX_WEBSITES(USERID,APPID,APPKEY,APPSECRET,DATAS,UPDATETIME,ISOPEN,TEMPNUM)
+		VALUES(#{userId},#{appId},#{appKey},#{appSecret},#{datas},now(),#{isopen},#{tempnum})
+	</insert>
+
+	<!--  <delete id="deleteMenuBYAppId" parameterType="MenuBean">
+		DELETE FROM WX_MENUS WHERE USERID = #{userId} AND APPID = #{appId}
+	</delete>-->
+	
+	<select id="selectWebsiteByAppId" parameterType="WebsiteBean" resultType="WebsiteBean">
+		SELECT * FROM WX_WEBSITES WHERE USERID = #{userId} AND APPID = #{appId}
+	</select>
+	
+	<select id="selectPreviewWebsiteByAppId" parameterType="WebsiteBean" resultType="WebsiteBean">
+		SELECT * FROM WX_WEBSITES WHERE APPID = #{appId}
+	</select>
+	
+	<select id="selWebsiteTempList" parameterType="WebsiteTempBean" resultType="WebsiteTempBean">
+		SELECT * FROM WX_WEBSITE_TEMPLATE WHERE ID != '' and STATUS = 1 order by TEMPTYPEID,TEMPNUM
+	</select>
+	
+</mapper>

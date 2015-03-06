@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.WxUserDAO">
+	<!-- WX_WXUSER_ONLY -->
+	<select id="selectOneWxUserById" resultType="WxUserBean">
+		SELECT * FROM WX_WXUSER_ONLY WHERE id = #{id}
+	</select>
+	
+	<select id="selectOneWxUserByOpenId" resultType="WxUserBean">
+		SELECT * FROM WX_WXUSER_ONLY WHERE OPENID = #{openid}
+	</select>
+	
+	 <insert id="insertOneWxUser" parameterType="WxUserBean">
+	 	INSERT INTO WX_WXUSER_ONLY
+	 	(openid,nickname,
+	 	sex,headimgurl,country,province,city,language,createtime,updatetime)
+	 	VALUES
+	 	(#{openid},
+	 	CAST(#{nickname} AS CHAR CHARACTER SET gbk),
+	 	#{sex},#{headimgurl},#{country},#{province},#{city},#{language},now(),now())
+	 </insert>	
+	
+	<update id="updateOneWxUserByOpenId" parameterType="WxUserBean">
+		UPDATE  WX_WXUSER_ONLY
+		SET nickname = CAST(#{nickname} AS CHAR CHARACTER SET gbk),sex =  #{sex},headimgurl =  #{headimgurl},country =  #{country},province =  #{province},city =  #{city},language =  #{language},updatetime = now()
+		WHERE openid = #{openid}
+	</update>		
+	
+	<update id="updateOneWxUserForLBS" parameterType="WxUserBean">
+		UPDATE  WX_WXUSER_ONLY
+		SET lat =  #{lat},lng =  #{lng},lbstime = now()
+		WHERE openid = #{openid}
+	</update>
+		
+	
+	<!-- WX_WXUSER_UNION -->
+	<update id="updateUnionOneWxUserForUpdatetime" parameterType="WxUserBean">
+		UPDATE  WX_WXUSER_UNION
+		SET isunsubscribe =  #{isunsubscribe},updatetime = now()
+		WHERE appid = #{appid}  and FromUserName = #{FromUserName}
+ 	</update>
+
+	 <insert id="insertUnionOneWxUser" parameterType="WxUserBean">
+	 	INSERT INTO WX_WXUSER_UNION
+	 	(appid,ToUserName,FromUserName,isunsubscribe,createtime,updatetime)
+	 	VALUES
+	 	(#{appid},#{ToUserName},#{FromUserName},#{isunsubscribe},now(),now())
+	 </insert>			
+	
+</mapper>

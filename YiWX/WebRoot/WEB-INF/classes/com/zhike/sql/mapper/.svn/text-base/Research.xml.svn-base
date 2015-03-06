@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhike.sql.dao.ResearchDAO">
+	<insert id="addNewResearch" parameterType="ResearchBean">
+		INSERT INTO WX_RESEARCH_Q(APPID,SERVICEID,BASICID,TITLE,ANSWERS,ANSWER_A,ANSWER_B,ANSWER_C,ANSWER_D,ANSWER_E,ANSWER_F,ANSWER_G,ANSWER_H,ANSWER_I,ANSWER_J)
+		VALUES(#{appid},#{serviceid},#{basicid},#{title},#{answers},#{answer_a},#{answer_b},#{answer_c},#{answer_d},#{answer_e},#{answer_f},#{answer_g},#{answer_h},#{answer_i},#{answer_j})
+	</insert>
+	
+	<select id="selectAllResearch" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT * FROM WX_RESEARCH_Q W WHERE W.BASICID = #{basicid} 
+	</select>
+	
+	<select id="selectResearchAll" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT * FROM WX_RESEARCH_Q W WHERE W.APPID = #{appid} and W.BASICID = #{basicid}
+		
+	</select>
+	
+	<delete id="delOneMessage" parameterType="MessageBean">
+		DELETE FROM WX_MESSAGE WHERE id= #{id}
+	</delete>
+	
+	<update id="updateResearch" parameterType="ResearchBean">
+		UPDATE WX_RESEARCH_Q SET TITLE=#{title},ANSWERS=#{answers},ANSWER_A=#{answer_a},ANSWER_B=#{answer_b},ANSWER_C=#{answer_c},ANSWER_D=#{answer_d},ANSWER_E=#{answer_e},ANSWER_F=#{answer_f},ANSWER_G=#{answer_g},ANSWER_H=#{answer_h},ANSWER_I=#{answer_i},ANSWER_J=#{answer_j} WHERE id = #{id}
+	</update>
+	
+	<select id="selectCountInfosByPage" resultType="int">
+		SELECT count(*) FROM WX_RESEARCH_Q WHERE  APPID = #{appid} and SERVICEID = #{serviceid}
+		<if test="sender != ''">
+		<![CDATA[and sender like '%${sender}%' ]]>
+		</if>
+		<if test="text != ''">
+		<![CDATA[and text like '%${text}%' ]]>
+		</if>	
+	</select>	
+	 
+	<insert id="addNewResearchbasic" parameterType="ResearchbasicBean" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO WX_RESEARCH_BASIC(APPID,UID,TITLE,KEYWORDS,DESCS,ENDDESCS,BEGINTIME,ENDTIME,IMG,CREATETIME)
+		VALUES(#{appid},#{uid},#{title},#{keywords},#{descs},#{enddescs},str_to_date(#{begintime},'%Y-%m-%d %H:%i:%s') ,str_to_date(#{endtime},'%Y-%m-%d %H:%i:%s'),#{img},now())
+	</insert>
+	
+	<update id="updateResearchbasic" parameterType="ResearchbasicBean">
+		UPDATE WX_RESEARCH_BASIC
+		SET title = #{title},keywords = #{keywords},descs = #{descs},enddescs = #{enddescs},begintime=str_to_date(#{begintime},'%Y-%m-%d %H:%i:%s'),endtime=str_to_date(#{endtime},'%Y-%m-%d %H:%i:%s'),img = #{img},createtime=now()
+		WHERE id = #{id}
+	</update>
+	
+		<delete id="delOneResearch" parameterType="ResearchbasicBean">
+
+		DELETE FROM WX_RESEARCH_Q WHERE id= #{id}
+	</delete>
+	
+	<delete id="delOneResearchbasicinfo" parameterType="ResearchbasicBean">
+
+		DELETE FROM WX_RESEARCH_Q WHERE basicid= #{id}
+	</delete>
+	
+	
+	<delete id="delOneResearchbasic" parameterType="ResearchbasicBean">
+
+		DELETE FROM WX_RESEARCH_BASIC WHERE id= #{id}
+	</delete>
+	
+	<delete id="stopOneResearchbasic" parameterType="ResearchbasicBean">
+
+		UPDATE WX_RESEARCH_BASIC SET ENDTIME=DATE_SUB(NOW(), INTERVAL '0 0:0:1' DAY_SECOND) WHERE id= #{id}
+	</delete>
+	
+	<delete id="delResearchByServiceid" parameterType="ResearchbasicBean">
+		DELETE FROM WX_RESEARCH_BASIC WHERE SERVICEID= #{id}
+	</delete>
+	
+	<select id="getResearchbasicBean" resultType="ResearchbasicBean" parameterType="ResearchbasicBean">
+		SELECT id,APPID,uid,descs,enddescs,title,keywords,str_to_date(begintime,'%Y-%m-%d %H:%i:%s') as begintime ,str_to_date(endtime,'%Y-%m-%d %H:%i:%s') as endtime,img,createtime FROM WX_RESEARCH_BASIC WHERE id= #{id} AND APPID = #{appid} and uid = #{uid}  ORDER BY ID DESC
+	</select> 
+	
+	<select id="getResearchBean" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT * FROM WX_RESEARCH_Q WHERE BASICID=#{basicid} AND ID=#{id};
+	</select> 
+	  
+	<select id="selectAllResearchbasic1111" resultType="ResearchbasicBean" parameterType="ResearchbasicBean">
+		SELECT id,APPID,uid,descs,begintime,endtime,concat(begintime,'  --  ',endtime) as acttime,title,keywords ,if(begintime>now(),'未开始',if( now()>endtime ,'已结束','进行中')) AS STATUS FROM WX_RESEARCH_BASIC W WHERE W.APPID = #{appid} AND UID= #{uid} ORDER BY ID DESC
+		
+	</select>
+	
+	<select id="selectAllResearchbasic" resultType="ResearchbasicBean" parameterType="ResearchbasicBean">
+		SELECT A.*,IFNULL(B.COUNTID,0) IDCOUNT  FROM 
+(SELECT id,APPID,uid,descs,begintime,endtime,concat(begintime,' -- ',endtime) as acttime,title,keywords ,if(begintime>now(),'未开始',
+if( now()>endtime ,'已结束','进行中')) AS STATUS FROM WX_RESEARCH_BASIC W 
+WHERE W.APPID = #{appid}  AND UID= #{uid}  ORDER BY ID DESC ) as a
+left join 
+(select count(id) countid,basicid from wx_research_q group by basicid) as b on b.basicid=a.id
+		
+	</select>
+	
+	<select id="selectCountmbasicInfosByPage" resultType="int" parameterType="ResearchbasicBean">
+		SELECT count(*) FROM WX_RESEARCH_BASIC WHERE  APPID = #{appid} 
+	</select>	
+	
+	<select id="selectServiceByID" resultType="ResearchPersonBean" parameterType="ResearchPersonBean">
+		SELECT * FROM WX_RESEARCH_U WHERE  OPENID = #{openid} AND SERVICEID= #{serviceid}
+	</select>	
+	<!--  
+	<insert id="addnewresearchperson"  parameterType="ResearchPersonBean">
+		INSERT INTO WX_RESEARCH_U (OPENID,SERVICEID,USERNAME,TEL) VALUES(#{openid},#{serviceid},#{username},#{tel})
+	</insert>	
+	-->
+		<insert id="addnewresearchperson"  parameterType="ResearchPersonBean">
+		INSERT INTO WX_RESEARCH_U (OPENID,SERVICEID) VALUES(#{openid},#{serviceid})
+	</insert>	
+	
+	<select id="selectquesionbasic" resultType="ResearchAnswerBean" parameterType="ResearchAnswerBean">
+	SELECT * FROM WX_RESEARCH_Q WHERE SERVICEID=#{serviceid}
+	</select>
+	
+	<insert id="addquestion"  parameterType="ResearchAnswerBean">
+	INSERT INTO WX_RESEARCH_P (USERID,ANSWERID,ANSWER_A,ANSWER_B,ANSWER_C,ANSWER_D,ANSWER_E,ANSWER_F,ANSWER_G,ANSWER_H,ANSWER_I,ANSWER_J) 
+	VALUES (#{userid},#{answerid},#{answer_a},#{answer_b},#{answer_c},#{answer_d},#{answer_e},#{answer_f},#{answer_g},#{answer_h},#{answer_i},#{answer_j}) 	
+	</insert>
+	
+	<select id="getpersoninfo" resultType="ResearchPersonBean" parameterType="ResearchPersonBean">
+	SELECT * FROM WX_RESEARCH_U WHERE SERVICEID=#{serviceid} AND OPENID=#{openid}
+	</select>
+	
+	<insert id="addquestiondesc"  parameterType="ResearchAnswerBean">
+	INSERT INTO WX_RESEARCH_A (USERID,SERVICEID,ANSWER_DESC) 
+	VALUES (#{userid},#{serviceid},#{answer_desc}) 	
+	</insert>
+	
+	<select id="selectmaxqidByID" resultType="ResearchPersonBean" parameterType="ResearchPersonBean">
+	SELECT MAX(ANSWERID) AS maxqid FROM WX_RESEARCH_P WHERE USERID=#{userid}
+	</select>
+	
+	<select id="selectdescByID" resultType="ResearchPersonBean" parameterType="ResearchPersonBean">
+	SELECT ANSWER_DESC FROM WX_RESEARCH_A WHERE USERID=#{userid}
+	</select>
+	
+	<select id="selectesearchresult_a" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.ACHOOSED/BB.AALLCHOOSED*100,5),0) AS       APER,BB.AALLCHOOSED,AA.ACHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS ACHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_A='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS AALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectesearchresult_b" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.BCHOOSED/BB.BALLCHOOSED*100,5),0) AS       BPER,BB.BALLCHOOSED,AA.BCHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS BCHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_B='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS BALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectesearchresult_c" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.CCHOOSED/BB.CALLCHOOSED*100,5),0) AS       CPER,BB.CALLCHOOSED,AA.CCHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS CCHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_C='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS CALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectesearchresult_d" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.DCHOOSED/BB.DALLCHOOSED*100,5),0) AS       DPER,BB.DALLCHOOSED,AA.DCHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS DCHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_D='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS DALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectesearchresult_e" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.ECHOOSED/BB.EALLCHOOSED*100,5),0) AS       EPER,BB.EALLCHOOSED,AA.ECHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS ECHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_E='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS EALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectesearchresult_f" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.FCHOOSED/BB.FALLCHOOSED*100,5),0) AS       FPER,BB.FALLCHOOSED,AA.FCHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS FCHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_F='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS FALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectesearchresult_g" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.GCHOOSED/BB.GALLCHOOSED*100,5),0) AS       GPER,BB.GALLCHOOSED,AA.GCHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS GCHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_G='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS GALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectesearchresult_h" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.HCHOOSED/BB.HALLCHOOSED*100,5),0) AS       HPER,BB.HALLCHOOSED,AA.HCHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS HCHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_H='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS HALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectesearchresult_i" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.ICHOOSED/BB.IALLCHOOSED*100,5),0) AS       IPER,BB.IALLCHOOSED,AA.ICHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS ICHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_I='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS IALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectesearchresult_j" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT IFNULL(LEFT(AA.JCHOOSED/BB.JALLCHOOSED*100,5),0) AS       JPER,BB.JALLCHOOSED,AA.JCHOOSED FROM ( 
+		(SELECT COUNT(A.ID) AS JCHOOSED FROM WX_RESEARCH_P  A  WHERE  A.ANSWER_J='1' AND A.ANSWERID=#{answerid} ) AS AA, 
+		(SELECT COUNT(B.ID) AS JALLCHOOSED FROM WX_RESEARCH_P  B  WHERE  B.ANSWERID=#{answerid}) AS BB 
+		)
+	</select>
+	
+	<select id="selectrs" resultType="ResearchBean" parameterType="ResearchBean">
+		SELECT COUNT(DISTINCT A.USERID) AS RS FROM WX_RESEARCH_P  A WHERE ANSWERID IN (SELECT ID FROM WX_RESEARCH_Q WHERE BASICID=#{basicid})
+	</select>
+	
+	<select id="getresearchbasicdesc" resultType="ResearchbasicBean" parameterType="ResearchbasicBean">
+		SELECT * FROM WX_RESEARCH_BASIC WHERE ID = #{id} 
+	</select>
+	
+	
+</mapper>
